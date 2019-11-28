@@ -9,14 +9,7 @@ class MyDocument extends Document {
   render () {
     return (
       <Html>
-        <Head>
-          <title>Bella's Miniatures</title>
-          <link
-            rel="stylesheet"
-            href="https://css.zeit.sh/v1.css"
-            type="text/css"
-          />
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />

@@ -1,5 +1,7 @@
 import { Component } from 'react'
 import Post from '../components/post'
+import Banner from '../components/banner/banner'
+import './styles.css'
 
 const client = require('contentful').createClient({
   space: process.env.SPACE_ID,
@@ -40,6 +42,7 @@ class Home extends Component {
 
     return (
       <div>
+        <Banner />
         <p>test test</p>
         {posts.length > 0
           ? posts.map(p => (
