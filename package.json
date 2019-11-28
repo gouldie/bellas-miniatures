@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "export": "next build && next export",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "contentful": "^7.10.0",
+    "dotenv": "^8.2.0",
     "next": "^9.1.4",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"

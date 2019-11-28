@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import Post from '../components/post'
 
+console.log('test', process.env.ACCESS_TOKEN)
+
 const client = require('contentful').createClient({
   space: process.env.SPACE_ID,
   accessToken: process.env.ACCESS_TOKEN
@@ -33,6 +35,8 @@ function Home () {
     getPosts()
   }, [])
 
+  console.log('render')
+
   return (
     <>
       <Head>
@@ -43,6 +47,7 @@ function Home () {
           type="text/css"
         />
       </Head>
+      <p>test</p>
       {posts.length > 0
         ? posts.map(p => (
           <Post
