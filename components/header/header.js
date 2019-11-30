@@ -19,6 +19,12 @@ class BurgerMenu extends Component {
     }
   }
 
+  componentDidMount () {
+    document.getElementsByClassName('bm-overlay')[0].addEventListener('touchmove', () => {
+      this.closeMenu()
+    })
+  }
+
   handleStateChange = (state) => {
     this.setState({ menuOpen: state.isOpen })
   }

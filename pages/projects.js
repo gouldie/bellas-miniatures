@@ -40,7 +40,7 @@ class Home extends Component {
     const { posts } = this.state
 
     return (
-      <div>
+      <div className='page-wrap'>
         <Banner />
         {posts.length > 0
           ? posts.map(p => (
