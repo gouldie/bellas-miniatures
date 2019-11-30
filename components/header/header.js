@@ -74,7 +74,6 @@ const Header = () => {
         {Object.keys(routes).map((r, i) =>
           <HeaderLink key={i} name={r} pathname={pathname} />
         )}
-
       </div>
       <div className='burger-menu'>
         <BurgerMenu pathname={pathname} />
