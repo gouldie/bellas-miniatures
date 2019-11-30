@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  position: relative;
 }
 
 .banner img {
@@ -11,3 +12,33 @@
   width: 100%;
   opacity: 0.8;
 }
+
+.banner div {
+  position: absolute;
+  text-align: center;
+}
+
+.banner h1, .banner h3 {
+  margin: 0;
+  font-weight: normal;
+}
+
+.banner h1 {
+  font-size: 40px;
+}
+
+.banner h3 {
+  font-size: 22px;
+}
+
+/* .banner h1 {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+}
+
+.banner h3 {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+} */

@@ -15,6 +15,11 @@ class Banner extends Component {
     return (
       <div className='banner'>
         <img id='parallax' src='/banner.jpg' />
+        <div>
+          <h1>Bella's Miniatures</h1>
+          <h3>Think Big Make Small</h3>
+        </div>
+
       </div>
     )
   }

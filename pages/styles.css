@@ -1,5 +1,5 @@
 body {
-  font-family: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   /* padding: 20px 20px 60px; */
   /* max-width: 680px; */
   margin: 0 auto;
@@ -12,6 +12,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   hyphens: auto;
+  height: 200vh; /* temp for testing scroll */
 }
 
 h2, h3, h4 {

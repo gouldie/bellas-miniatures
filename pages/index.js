@@ -43,7 +43,6 @@ class Home extends Component {
     return (
       <div>
         <Banner />
-        <p>test test</p>
         {posts.length > 0
           ? posts.map(p => (
             <Post
