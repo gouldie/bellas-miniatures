@@ -10,7 +10,7 @@
 .banner img {
   position: relative;
   width: 100%;
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 .banner div {
@@ -24,21 +24,22 @@
 }
 
 .banner h1 {
-  font-size: 40px;
+  font-size: 50px;
+  opacity: 0.9;
 }
 
 .banner h3 {
-  font-size: 22px;
+  font-size: 25px;
+  position: relative;
+  top: -10px;
+  opacity: 0.9;
 }
 
-/* .banner h1 {
-  position: absolute;
-  width: 100%;
-  text-align: center;
+@media screen and (max-width: 600px) {
+  .banner h1 {
+    font-size: 40px;
+  }
+  .banner h3 {
+    font-size: 20px;
+  }
 }
-
-.banner h3 {
-  position: absolute;
-  width: 100%;
-  text-align: center;
-} */
