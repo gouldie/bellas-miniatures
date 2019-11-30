@@ -1,5 +1,5 @@
 import React from 'react'
-import Error from 'next/error'
+// import Error from 'next/error'
 
 const ErrorPage = () => (
   <div style={{ marginTop: '100px', textAlign: 'center' }}>
