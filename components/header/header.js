@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { elastic as Menu } from 'react-burger-menu'
+import { slide as Menu } from 'react-burger-menu'
 import './header.css'
 
 const routes = {
