@@ -10,17 +10,50 @@ const routes = {
   contact: '/contact'
 }
 
-const BurgerMenu = ({ pathname }) => (
-  <Menu right>
-    {Object.keys(routes).map((r, i) =>
-      <HeaderLink key={i} name={r} pathname={pathname} />
-    )}
-  </Menu>
+class BurgerMenu extends Component {
+  constructor () {
+    super()
 
-)
+    this.state = {
+      menuOpen: false
+    }
+  }
 
-const HeaderLink = ({ name, pathname }) => (
-  <Link href={routes[name]}><p className={pathname === routes[name] ? 'selected' : ''}>{name}</p></Link>
+  handleStateChange = (state) => {
+    this.setState({ menuOpen: state.isOpen })
+  }
+
+  closeMenu = () => {
+    this.setState({ menuOpen: false })
+  }
+
+  render () {
+    const { pathname } = this.props
+    const { menuOpen } = this.state
+
+    return (
+      <Menu
+        right
+        isOpen={menuOpen}
+        onStateChange={state => this.handleStateChange(state)}
+      >
+        {Object.keys(routes).map((r, i) =>
+          <HeaderLink key={i} name={r} pathname={pathname} closeMenu={this.closeMenu} />
+        )}
+      </Menu>
+    )
+  }
+}
+
+const HeaderLink = ({ name, pathname, closeMenu }) => (
+  <Link href={routes[name]}>
+    <p
+      className={pathname === routes[name] ? 'selected' : ''}
+      onClick={closeMenu}
+    >
+      {name}
+    </p>
+  </Link>
 )
 
 const Header = () => {
@@ -32,11 +65,15 @@ const Header = () => {
         <Link href='/'><p>LOGO</p></Link>
       </div>
       <div className='header-menu'>
-        {/* {Object.keys(routes).map((r, i) =>
-          <HeaderLink key={i} name={r} pathname={pathname} /> */}
-        {/* )} */}
+        {Object.keys(routes).map((r, i) =>
+          <HeaderLink key={i} name={r} pathname={pathname} />
+        )}
+
+      </div>
+      <div className='burger-menu'>
         <BurgerMenu pathname={pathname} />
       </div>
+
     </header>
   )
 }
