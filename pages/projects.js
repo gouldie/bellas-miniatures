@@ -1,7 +1,6 @@
 import { Component } from 'react'
 import Post from '../components/post'
 import Banner from '../components/banner/banner'
-import './styles.css'
 
 const client = require('contentful').createClient({
   space: process.env.SPACE_ID,

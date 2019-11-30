@@ -1,1 +1,1 @@
-export default () => <p>CONTACT</p>
+export default () => <p style={{ textAlign: 'center' }}>CONTACT</p>
