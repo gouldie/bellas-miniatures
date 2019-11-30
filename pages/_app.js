@@ -20,6 +20,7 @@ export default class MyApp extends App {
       <>
         <Head>
           <title>Bella's Miniatures</title>
+          {/* <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.0.2/dist/simpleParallax.min.js" /> */}
         </Head>
         <Component {...pageProps} />
       </>

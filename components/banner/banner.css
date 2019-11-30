@@ -1,3 +1,13 @@
 .banner {
-  background: blue;
+  max-height: 35vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.banner img {
+  position: relative;
+  width: 100%;
+  opacity: 0.8;
 }
