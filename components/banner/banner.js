@@ -3,7 +3,7 @@ import './banner.css'
 
 const parallax = () => {
   const img = document.getElementById('parallax')
-  img.style.top = (window.pageYOffset / 3) * -1 + 'px'
+  img.style.top = (window.pageYOffset / 5) * -1 + 'px'
 }
 
 class Banner extends Component {
