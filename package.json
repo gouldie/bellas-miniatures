@@ -23,6 +23,7 @@
     "react-burger-menu": "^2.6.13",
     "react-dom": "^16.12.0",
     "react-parallax": "^2.2.4",
+    "react-select": "^3.0.8",
     "simple-parallax-js": "^5.1.0"
   },
   "devDependencies": {

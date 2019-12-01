@@ -1,6 +1,7 @@
 import { Component } from 'react'
-import Project from '../components/project/project'
-import Banner from '../components/banner/banner'
+// import Project from '../components/project/project'
+// import Banner from '../components/banner/banner'
+import { Project, Banner } from '../components'
 
 const client = require('contentful').createClient({
   space: process.env.SPACE_ID,
