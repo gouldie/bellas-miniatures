@@ -8,9 +8,9 @@ export default ({ title, image }) => (
     <div className='project-info'>
       <p>{title}</p>
       <div>
-        <i class="fas fa-thumbs-up"></i>
+        <i className="fas fa-thumbs-up"></i>
         <span>26</span>
-        <i class="fas fa-eye"></i>
+        <i className="fas fa-eye"></i>
         <span>982</span>
       </div>
     </div>
