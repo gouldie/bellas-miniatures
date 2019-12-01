@@ -23,6 +23,7 @@ export default class MyApp extends App {
         <Head>
           <title>Bella's Miniatures</title>
           <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet"></link>
+          <script src="https://kit.fontawesome.com/02dd168113.js" crossorigin="anonymous"></script>
         </Head>
         <Header />
         <Component {...pageProps} />

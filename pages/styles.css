@@ -112,10 +112,6 @@ button:disabled {
   background: #999;
 }
 
-img {
-  /* max-width: 100%; */
-}
-
 textarea {
   min-height: 300px;
   width: 100%;
@@ -128,4 +124,10 @@ hr {
   border: none;
   border-bottom: 1px solid #efefef;
   margin: 6em auto;
+}
+
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
 }

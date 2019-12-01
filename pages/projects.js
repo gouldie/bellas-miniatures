@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import Post from '../components/post'
+import Project from '../components/project/project'
 import Banner from '../components/banner/banner'
 
 const client = require('contentful').createClient({
@@ -12,14 +12,26 @@ class Home extends Component {
     super()
 
     this.state = {
-      posts: []
+      projects: []
     }
   }
 
   async componentDidMount () {
     const contentTypes = await this.fetchContentTypes()
-    const allPosts = await this.fetchEntriesForContentType(contentTypes[0])
-    this.setState({ posts: allPosts })
+    const projects = await this.fetchEntriesForContentType(contentTypes[0])
+    this.setState({ projects }, () => {
+
+    })
+    this.resizeImages()
+    window.addEventListener('resize', this.resizeImages)
+  }
+
+  resizeImages = () => {
+    const projectList = document.getElementsByClassName('project')
+
+    for (let i = 0; i < projectList.length; i++) {
+      projectList[i].style.height = projectList[i].offsetWidth * 0.8 + 'px'
+    }
   }
 
   fetchContentTypes = async () => {
@@ -37,23 +49,24 @@ class Home extends Component {
   }
 
   render () {
-    const { posts } = this.state
+    const { projects } = this.state
+
+    console.log('p', projects)
 
     return (
       <div className='page-wrap'>
         <Banner />
-        {posts.length > 0
-          ? posts.map(p => (
-            <Post
-              alt={p.fields.alt}
-              date={p.fields.date}
-              key={p.fields.title}
-              image={p.fields.image}
-              title={p.fields.title}
-              url={p.fields.url}
-            />
-          ))
-          : null}
+        <div className='projects'>
+          {projects.length > 0
+            ? projects.map((p, i) => (
+              <Project
+                key={i}
+                title={p.fields.title}
+                image={p.fields.images[0].fields.file.url}
+              />
+            ))
+            : null}
+        </div>
       </div>
     )
   }
