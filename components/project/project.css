@@ -11,6 +11,11 @@
   overflow: hidden;
   border-radius: 4px;
   cursor: pointer;
+  transition: box-shadow .3s;
+}
+
+.project:hover {
+  box-shadow: 0 0 10px rgba(33,33,33,.888);
 }
 
 .project img {
