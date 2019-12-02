@@ -1,7 +1,18 @@
 import { Component } from 'react'
-// import Project from '../components/project/project'
-// import Banner from '../components/banner/banner'
 import { Project, Banner } from '../components'
+import Select, { components } from 'react-select'
+
+const options = [
+  { value: 'name', label: 'Sort by: Name', subLabel: 'Name' }
+]
+
+const Option = props => {
+  return (
+    <components.Option {...props}>
+      <div>{props.data.subLabel}</div>
+    </components.Option>
+  )
+}
 
 const client = require('contentful').createClient({
   space: process.env.SPACE_ID,
@@ -13,7 +24,8 @@ class Home extends Component {
     super()
 
     this.state = {
-      projects: []
+      projects: [],
+      filter: { value: 'name', label: 'Sort by: Name' }
     }
   }
 
@@ -49,14 +61,27 @@ class Home extends Component {
     console.log(`Error getting Entries for ${contentType.name}.`)
   }
 
-  render () {
-    const { projects } = this.state
+  handleChange = filter => {
+    this.setState({ filter })
+    console.log('Option selected:', filter)
+  };
 
-    console.log('p', projects)
+  render () {
+    const { projects, filter } = this.state
 
     return (
       <div className='page-wrap'>
         <Banner />
+        <div className='select-wrapper'>
+          <Select
+            instanceId='select-field'
+            value={filter}
+            onChange={this.handleChange}
+            options={options}
+            components={{ Option }}
+          />
+        </div>
+
         <div className='projects'>
           {projects.length > 0
             ? projects.map((p, i) => (
