@@ -10,6 +10,7 @@
   justify-content: center;
   overflow: hidden;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .project img {
@@ -61,7 +62,7 @@
 
 @media screen and (max-width: 600px) {
   .project-wrapper {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
   }
 }
