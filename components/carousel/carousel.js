@@ -15,23 +15,41 @@ class Carousel extends Component {
   render () {
     return (
       <div className='carousel'>
-        <Slider nextArrow={<NextArrow />}>
-          <div className='carousel-slider'>
-            <div>
-              <div>
-                <p>Projects made</p>
-                <p>with <span>love</span></p>
+        <Slider dots={true} nextArrow={<NextArrow />}>
+          <div className='carousel-slider-wrapper'>
+            <div className='carousel-slider'>
+              <div className='carousel-text'>
+                <h3>Think big,</h3>
+                <h3>make <span>small</span></h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
               </div>
-              <img style={{ width: '400px' }} src="https://images.ctfassets.net/r920pumuvpph/3c7dJyNYYgorkFLkOgQ15j/cfe4ab8ff7c24b4e93f486abd2158a19/flowerhousetopview.jpeg" />
+              <div className='carousel-image'>
+                <img src="https://images.ctfassets.net/r920pumuvpph/3c7dJyNYYgorkFLkOgQ15j/cfe4ab8ff7c24b4e93f486abd2158a19/flowerhousetopview.jpeg" />
+              </div>
             </div>
           </div>
-          <div className='carousel-slider'>
-            <div>
-              <div>
-                <p>Projects made</p>
-                <p>with <span>love</span></p>
+          <div className='carousel-slider-wrapper'>
+            <div className='carousel-slider'>
+              <div className='carousel-text'>
+                <h3>Think big,</h3>
+                <h3>make <span>small</span></h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
               </div>
-              <img style={{ width: '400px' }} src="https://images.ctfassets.net/r920pumuvpph/3c7dJyNYYgorkFLkOgQ15j/cfe4ab8ff7c24b4e93f486abd2158a19/flowerhousetopview.jpeg" />
+              <div className='carousel-image'>
+                <img src="https://images.ctfassets.net/r920pumuvpph/3c7dJyNYYgorkFLkOgQ15j/cfe4ab8ff7c24b4e93f486abd2158a19/flowerhousetopview.jpeg" />
+              </div>
+            </div>
+          </div>
+          <div className='carousel-slider-wrapper'>
+            <div className='carousel-slider'>
+              <div className='carousel-text'>
+                <h3>Think big,</h3>
+                <h3>make <span>small</span></h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+              <div className='carousel-image'>
+                <img src="https://images.ctfassets.net/r920pumuvpph/3c7dJyNYYgorkFLkOgQ15j/cfe4ab8ff7c24b4e93f486abd2158a19/flowerhousetopview.jpeg" />
+              </div>
             </div>
           </div>
         </Slider>
