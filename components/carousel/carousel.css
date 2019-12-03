@@ -1,5 +1,5 @@
 .slick-slide img {
-  margin: auto;
+  /* margin: auto; */
 }
 
 .slick-next:before, .slick-prev:before {
@@ -12,8 +12,25 @@
   height: 28px;
 }
 
+.carousel {
+  padding: 40px;
+}
+
+.carousel-slider>div {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
 .carousel-slider p {
-  font-size: 50px;
+  font-size: 80px;
+  line-height: 100px;
   font-weight: 300;
   margin: 0;
+}
+
+.carousel-slider span {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-style: italic;
 }

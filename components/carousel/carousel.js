@@ -14,10 +14,19 @@ const NextArrow = (props) => {
 class Carousel extends Component {
   render () {
     return (
-      <div className='carousel' style={{ padding: '40px' }}>
+      <div className='carousel'>
         <Slider nextArrow={<NextArrow />}>
           <div className='carousel-slider'>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
+            <div>
+              <div>
+                <p>Projects made</p>
+                <p>with <span>love</span></p>
+              </div>
+              <img style={{ width: '400px' }} src="https://images.ctfassets.net/r920pumuvpph/3c7dJyNYYgorkFLkOgQ15j/cfe4ab8ff7c24b4e93f486abd2158a19/flowerhousetopview.jpeg" />
+            </div>
+          </div>
+          <div className='carousel-slider'>
+            <div>
               <div>
                 <p>Projects made</p>
                 <p>with <span>love</span></p>
