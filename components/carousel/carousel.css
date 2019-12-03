@@ -1,0 +1,19 @@
+.slick-slide img {
+  margin: auto;
+}
+
+.slick-next:before, .slick-prev:before {
+  color: #f0cebe;
+  font-size: 30px;
+}
+
+.slick-next, .slick-prev {
+  width: 28px;
+  height: 28px;
+}
+
+.carousel-slider p {
+  font-size: 50px;
+  font-weight: 300;
+  margin: 0;
+}

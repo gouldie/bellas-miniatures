@@ -24,7 +24,9 @@
     "react-dom": "^16.12.0",
     "react-parallax": "^2.2.4",
     "react-select": "^3.0.8",
-    "simple-parallax-js": "^5.1.0"
+    "react-slick": "^0.25.2",
+    "simple-parallax-js": "^5.1.0",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",

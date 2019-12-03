@@ -25,7 +25,7 @@ class Home extends Component {
 
     this.state = {
       projects: [],
-      filter: { value: 'name', label: 'Sort by: Name' }
+      filter: { value: 'name', label: 'Sort by: Name', subLabel: 'Name' }
     }
   }
 

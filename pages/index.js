@@ -1,1 +1,14 @@
-export default () => <p style={{ textAlign: 'center' }}>HOME</p>
+import { Component } from 'react'
+import { Carousel } from '../components'
+
+class Home extends Component {
+  render () {
+    return (
+      <div>
+        <Carousel />
+      </div>
+    )
+  }
+}
+
+export default Home

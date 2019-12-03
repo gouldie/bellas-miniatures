@@ -8,16 +8,16 @@ const parallax = () => {
 
 class Banner extends Component {
   componentDidMount () {
-    window.addEventListener('scroll', parallax)
+    // window.addEventListener('scroll', parallax)
   }
 
   render () {
     return (
       <div className='banner'>
-        <img id='parallax' src='/banner.jpg' />
+        <img id='parallax' src='/banner.png' />
         <div>
-          <h1>Bella's Miniatures</h1>
-          <h3>Think Big Make Small</h3>
+          <h1>Projects</h1>
+          {/* <h3>Think Big Make Small</h3> */}
         </div>
 
       </div>
