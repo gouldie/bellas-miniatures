@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import { Project, Banner } from '../components'
+// import { Project, Banner } from '../components'
 import Select, { components } from 'react-select'
 
 const options = [
@@ -71,7 +71,7 @@ class Home extends Component {
 
     return (
       <div className='page-wrap'>
-        <Banner />
+        {/* <Banner /> */}
         <div className='select-wrapper'>
           <Select
             instanceId='select-field'
@@ -83,7 +83,7 @@ class Home extends Component {
         </div>
 
         <div className='projects'>
-          {projects.length > 0
+          {/* {projects.length > 0
             ? projects.map((p, i) => (
               <Project
                 key={i}
@@ -91,7 +91,7 @@ class Home extends Component {
                 image={p.fields.images[0].fields.file.url}
               />
             ))
-            : null}
+            : null} */}
         </div>
       </div>
     )

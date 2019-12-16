@@ -1,8 +1,8 @@
 import App from 'next/app'
 import Head from 'next/head'
 import React from 'react'
-import { Header } from '../components'
-import './styles.css'
+import { HeaderAlt } from '../components'
+import '../public/sass/main.scss'
 
 export default class MyApp extends App {
   static async getInitialProps ({ Component, ctx }) {
@@ -23,7 +23,7 @@ export default class MyApp extends App {
         <Head>
           <title>Bella's Miniatures</title>
         </Head>
-        <Header />
+        <HeaderAlt />
         <Component {...pageProps} />
       </>
     )

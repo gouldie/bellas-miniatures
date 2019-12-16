@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { slide as Menu } from 'react-burger-menu'
-import './header.css'
 
 const routes = {
   about: '/about',
@@ -66,7 +65,7 @@ const Header = () => {
   const pathname = useRouter().pathname
 
   return (
-    <header>
+    <header id='header'>
       <div className='logo'>
         <Link href='/'><p>LOGO</p></Link>
       </div>
