@@ -1,5 +1,5 @@
 // export { default as Banner } from './banner/banner'
-export { default as Header } from './header/header'
-export { default as HeaderAlt } from './headeralt/headeralt'
-// export { default as Project } from './project/project'
+export { default as Header } from './core/Header'
+export { default as HeaderAlt } from './core/HeaderAlt'
+export { default as Project } from './projects/Project'
 // export { default as Carousel } from './carousel/carousel'
