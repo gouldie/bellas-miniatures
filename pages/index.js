@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import { Project } from '../components'
+import { HomeImage } from '../components'
 import '../public/sass/core.scss'
 
 const client = require('contentful').createClient({
@@ -56,9 +56,8 @@ class Home extends Component {
         <div className='projects'>
           {projects.length > 0
             ? projects.map((p, i) => (
-              <Project
+              <HomeImage
                 key={i}
-                title={p.fields.title}
                 image={p.fields.images[0].fields.file.url}
               />
             ))

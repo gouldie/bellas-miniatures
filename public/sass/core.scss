@@ -107,6 +107,10 @@
   
   .header-menu {
     display: flex;
+    width: 90%;
+    max-width: 500px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
   }
   
   h1 {
@@ -121,7 +125,7 @@
     font-size: 13px;
     font-weight: 700;
     letter-spacing: .25em;
-    margin: 12px 24px;
+    margin: 12px 12px;
     cursor: pointer;
   }
   
@@ -188,13 +192,13 @@
 
 @media screen and (max-width: 1200px) {
   .project-wrapper {
-    width: 33.3%;
+    width: 25%;
   }
 }
 
 @media screen and (max-width: 850px) {
   .project-wrapper {
-    width: 50%;
+    width: 33.3%;
   }
 }
 
@@ -212,7 +216,14 @@
 
 @media screen and (max-width: 600px) {
   .project-wrapper {
+    max-width: 420px;
     width: 100%;
     margin: 0 auto;
+  }
+
+  #header-alt {
+    h1 {
+      font-size: 30px;
+    }
   }
 }
