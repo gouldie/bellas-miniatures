@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+const img = require('../../public/logo.png')
 
 const routes = {
   home: '/',
@@ -26,7 +27,8 @@ const Header = () => {
   return (
     <header id='header-alt'>
       <div className='logo'>
-        <h1>Miniature Modelling</h1>
+        {/* <h1>Miniature Modelling</h1> */}
+        <img src='/logo.png' alt='alt text' style={{ width: '400px' }} />
       </div>
       <div className='header-menu'>
         {Object.keys(routes).map((r, i) =>
