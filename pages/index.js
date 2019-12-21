@@ -71,9 +71,11 @@ class Home extends Component {
   render () {
     const { projects, isOpen, photoIndex } = this.state
 
+    console.log('r', projects)
+
     const images = projects && projects.map(p => {
       return {
-        src: 'https://' + p.fields.images[0].fields.file.url.substring(2)
+        src: 'https://' + p.fields.image.fields.file.url.substring(2)
       }
     })
 
@@ -85,7 +87,7 @@ class Home extends Component {
               <HomeImage
                 key={i}
                 index={i}
-                image={'https://' + p.fields.images[0].fields.file.url.substring(2)}
+                image={'https://' + p.fields.image.fields.file.url.substring(2)}
                 onClick={this.open}
               />
             ))
