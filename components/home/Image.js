@@ -1,7 +1,7 @@
-export default () => (
-  <div className='project-wrapper'>
+export default ({ onClick, image, index }) => (
+  <div className='project-wrapper' onClick={() => onClick(index)}>
     <div className='project'>
-      <img src='https://images.ctfassets.net/r920pumuvpph/3c7dJyNYYgorkFLkOgQ15j/cfe4ab8ff7c24b4e93f486abd2158a19/flowerhousetopview.jpeg' />
+      <img src={image} />
     </div>
   </div>
 )

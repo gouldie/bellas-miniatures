@@ -3,6 +3,7 @@ import Head from 'next/head'
 import React from 'react'
 import { HeaderAlt } from '../components'
 import '../public/sass/main.scss'
+import '../public/sass/core.scss'
 
 export default class MyApp extends App {
   static async getInitialProps ({ Component, ctx }) {

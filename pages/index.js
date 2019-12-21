@@ -1,6 +1,7 @@
 import { Component } from 'react'
 import { HomeImage } from '../components'
-import '../public/sass/core.scss'
+import Carousel, { Modal, ModalGateway } from 'react-images'
+import '../public/sass/home.scss'
 
 const client = require('contentful').createClient({
   space: process.env.SPACE_ID,
@@ -12,7 +13,9 @@ class Home extends Component {
     super()
 
     this.state = {
-      projects: []
+      projects: [],
+      photoIndex: 0,
+      isOpen: false
     }
   }
 
@@ -42,14 +45,29 @@ class Home extends Component {
 
   fetchEntriesForContentType = async (contentType) => {
     const entries = await client.getEntries({
-      content_type: contentType.sys.id
+      content_type: contentType.sys.id,
+      limit: 12
     })
     if (entries.items) return entries.items
     console.log(`Error getting Entries for ${contentType.name}.`)
   }
 
+  open = (i) => {
+    this.setState({ isOpen: true, photoIndex: i })
+  }
+
+  close = () => {
+    this.setState({ isOpen: false })
+  }
+
   render () {
-    const { projects } = this.state
+    const { projects, isOpen, photoIndex } = this.state
+
+    const images = projects && projects.map(p => {
+      return {
+        src: 'https://' + p.fields.images[0].fields.file.url.substring(2)
+      }
+    })
 
     return (
       <div>
@@ -58,11 +76,22 @@ class Home extends Component {
             ? projects.map((p, i) => (
               <HomeImage
                 key={i}
-                image={p.fields.images[0].fields.file.url}
+                index={i}
+                image={'https://' + p.fields.images[0].fields.file.url.substring(2)}
+                onClick={this.open}
               />
             ))
             : null}
         </div>
+
+        <ModalGateway>
+          {isOpen && (
+            <Modal onClose={this.close}>
+              <Carousel currentIndex={photoIndex} views={images} />
+            </Modal>
+
+          )}
+        </ModalGateway>
       </div>
     )
   }

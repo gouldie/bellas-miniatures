@@ -31,30 +31,30 @@ a:hover {
   border-bottom: 1px solid #0076FF;
 }
 
-ul, ol {
-  padding: 0;
-  margin-left: 1.5em;
-}
+// ul, ol {
+//   padding: 0;
+//   margin-left: 1.5em;
+// }
 
-ul {
-  list-style-type: none;
-}
+// ul {
+//   list-style-type: none;
+// }
 
-li {
-  margin-bottom: 10px;
-}
+// li {
+//   margin-bottom: 10px;
+// }
 
-ul li:before {
-  content: '–';
-}
+// ul li:before {
+//   content: '–';
+// }
 
-li:before {
-  display: inline-block;
-  color: #999;
-  position: absolute;
-  margin-left: -18px;
-  transition: color 0.2s ease;
-}
+// li:before {
+//   display: inline-block;
+//   color: #999;
+//   position: absolute;
+//   margin-left: -18px;
+//   transition: color 0.2s ease;
+// }
 
 code, pre {
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
@@ -77,7 +77,7 @@ input, button, textarea
   margin: 0;
   border: 1px solid #d1d1d1;
   border-radius: 5px;
-  padding: .5em;
+  // padding: .5em;
   vertical-align: middle;
   white-space: normal;
   background: none;
@@ -88,8 +88,8 @@ input, button, textarea
 }
 
 button {
-  padding: .65em 1em;
-  background: #0076ff;
+  // padding: .65em 1em;
+  // background: #0076ff;
   color: #fff;
   border: none;
   cursor: pointer;
@@ -98,18 +98,18 @@ button {
 }
 input:focus, textarea:focus, button:focus
 {
-  outline: 0;
-  border-color: #0076ff;
+  // outline: 0;
+  // border-color: #0076ff;
 }
 button:hover {
-  background: rgba(0, 118, 255, 0.8);
+  // background: rgba(0, 118, 255, 0.8);
 }
 button:focus {
-  box-shadow: 0 0 0 2px rgba(0, 118, 255, 0.5);
+  // box-shadow: 0 0 0 2px rgba(0, 118, 255, 0.5);
 }
 button:disabled {
-  pointer-events: none;
-  background: #999;
+  // pointer-events: none;
+  // background: #999;
 }
 
 textarea {
