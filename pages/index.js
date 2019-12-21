@@ -3,6 +3,14 @@ import { HomeImage } from '../components'
 import Carousel, { Modal, ModalGateway } from 'react-images'
 import '../public/sass/home.scss'
 
+const FooterCaption = () => {
+  return (
+    <span>
+      Example text
+    </span>
+  )
+}
+
 const client = require('contentful').createClient({
   space: process.env.SPACE_ID,
   accessToken: process.env.ACCESS_TOKEN
@@ -87,7 +95,7 @@ class Home extends Component {
         <ModalGateway>
           {isOpen && (
             <Modal onClose={this.close}>
-              <Carousel currentIndex={photoIndex} views={images} />
+              <Carousel currentIndex={photoIndex} views={images} components={{ FooterCaption }} />
             </Modal>
 
           )}
