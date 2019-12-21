@@ -194,6 +194,18 @@
   margin-right: 5px;
 }
 
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 60px;
+}
+
+.select-wrapper {
+  width: 300px;
+  margin: 20px 10px 0 auto;
+  padding: 0 10px;
+}
+
 @media screen and (max-width: 1200px) {
   .project-wrapper {
     width: 33.3%;
