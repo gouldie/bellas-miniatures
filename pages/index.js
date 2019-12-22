@@ -81,7 +81,7 @@ class Home extends Component {
 
     return (
       <div>
-        <p style={{ width: '800px', margin: '40px auto 35px', fontSize: '20px' }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+        <p style={{ width: '800px', margin: '40px auto 35px', fontSize: '20px ' }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
         <div className='projects'>
           {projects.length > 0
             ? projects.map((p, i) => (
