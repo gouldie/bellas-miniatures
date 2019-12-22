@@ -1,7 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-const img = require('../../public/logo.png')
 
 const routes = {
   home: '/',

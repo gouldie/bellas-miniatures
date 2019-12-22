@@ -1,5 +1,23 @@
 import { Component } from 'react'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import '../public/sass/blog.scss'
+
+const options = {
+  renderNode: {
+    'embedded-asset-block': (node) =>
+      <img style={{ width: '50%' }} src={`${node.data.target.fields.file.url}`}/>
+  }
+}
+
+const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
+
+const formatDate = (date) => {
+  const month = months[date.getMonth()]
+  const day = ('0' + date.getDate()).slice(-2)
+  const year = date.getFullYear()
+
+  return `${month}, ${day} ${year}`
+}
 
 const client = require('contentful').createClient({
   space: process.env.SPACE_ID,
@@ -16,19 +34,9 @@ class Blog extends Component {
   }
 
   async componentDidMount () {
-    const contentTypes = await this.fetchContentTypes()
-    const blogPosts = await this.fetchEntriesForContentType(contentTypes[2])
-    this.setState({ blogPosts }, () => {
-
-    })
-    this.resizeImages()
-    window.addEventListener('resize', this.resizeImages)
-  }
-
-  fetchContentTypes = async () => {
-    const types = await client.getContentTypes()
-    if (types.items) return types.items
-    console.log('Error getting Content Types.')
+    const contentType = await client.getContentType('blogPost')
+    const blogPosts = await this.fetchEntriesForContentType(contentType)
+    this.setState({ blogPosts })
   }
 
   fetchEntriesForContentType = async (contentType) => {
@@ -40,9 +48,21 @@ class Blog extends Component {
   }
 
   render () {
+    const { blogPosts } = this.state
+
+    console.log('bp', blogPosts)
+
     return (
       <div className='blog-container'>
-
+        {
+          blogPosts.map((b, i) => (
+            <div className='blog-post' key={i}>
+              <p className='date'>{formatDate(new Date(b.sys.createdAt))}</p>
+              <p className='title'>{b.fields.title}</p>
+              {documentToReactComponents(b.fields.description, options)}
+            </div>
+          ))
+        }
       </div>
     )
   }

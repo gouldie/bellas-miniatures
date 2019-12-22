@@ -32,11 +32,9 @@ class Home extends Component {
   }
 
   async componentDidMount () {
-    const contentTypes = await this.fetchContentTypes()
-    const projects = await this.fetchEntriesForContentType(contentTypes[1])
-    this.setState({ projects }, () => {
-
-    })
+    const contentType = await client.getContentType('project')
+    const projects = await this.fetchEntriesForContentType(contentType)
+    this.setState({ projects })
     this.resizeImages()
     window.addEventListener('resize', this.resizeImages)
   }
@@ -47,12 +45,6 @@ class Home extends Component {
     for (let i = 0; i < projectList.length; i++) {
       projectList[i].style.height = projectList[i].offsetWidth * 0.8 + 'px'
     }
-  }
-
-  fetchContentTypes = async () => {
-    const types = await client.getContentTypes()
-    if (types.items) return types.items
-    console.log('Error getting Content Types.')
   }
 
   fetchEntriesForContentType = async (contentType) => {
