@@ -1,6 +1,7 @@
 import { Component } from 'react'
-// import { Project, Banner } from '../components'
+import { Project } from '../components'
 import Select, { components } from 'react-select'
+import '../public/sass/projects.scss'
 
 const options = [
   { value: 'name', label: 'Sort by: Name', subLabel: 'Name' }
@@ -31,7 +32,7 @@ class Home extends Component {
 
   async componentDidMount () {
     const contentTypes = await this.fetchContentTypes()
-    const projects = await this.fetchEntriesForContentType(contentTypes[0])
+    const projects = await this.fetchEntriesForContentType(contentTypes[1])
     this.setState({ projects }, () => {
 
     })
@@ -69,8 +70,10 @@ class Home extends Component {
   render () {
     const { projects, filter } = this.state
 
+    console.log(projects)
+
     return (
-      <div className='page-wrap'>
+      <div className='projects-container'>
         {/* <Banner /> */}
         <div className='select-wrapper'>
           <Select
@@ -83,7 +86,7 @@ class Home extends Component {
         </div>
 
         <div className='projects'>
-          {/* {projects.length > 0
+          {projects.length > 0
             ? projects.map((p, i) => (
               <Project
                 key={i}
@@ -91,7 +94,7 @@ class Home extends Component {
                 image={p.fields.images[0].fields.file.url}
               />
             ))
-            : null} */}
+            : null}
         </div>
       </div>
     )
