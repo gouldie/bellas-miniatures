@@ -1,9 +1,9 @@
 .projects-container {
-  padding: 0 55px;
+  padding: 0 50px;
 }
 
 .project-wrapper {
-  padding: 5px;
+  padding: 10px;
   width: 25%;
   box-sizing: border-box;
 }
@@ -28,7 +28,7 @@
 }
 
 .project-info {
-  padding: 5px 0;
+  padding: 8px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -38,6 +38,7 @@
   margin: 0;
   font-size: 13px;
   font-weight: 700;
+  color: #696969;
 }
 
 .project-info span {
@@ -61,11 +62,12 @@
   display: flex;
   flex-wrap: wrap;
   // padding: 0 60px;
+  margin-top: 20px;
 }
 
 .select-wrapper {
   width: 300px;
-  margin: 20px 10px 0 auto;
+  margin: 20px 0 0 auto;
   padding: 0 10px;
 }
 

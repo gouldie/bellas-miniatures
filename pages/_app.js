@@ -22,7 +22,7 @@ export default class MyApp extends App {
     return (
       <>
         <Head>
-          <title>Bella's Miniatures</title>
+          <title>Miniature Modelling</title>
         </Head>
         <HeaderAlt2 />
         <Component {...pageProps} />

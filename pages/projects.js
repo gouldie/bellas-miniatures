@@ -4,7 +4,8 @@ import Select, { components } from 'react-select'
 import '../public/sass/projects.scss'
 
 const options = [
-  { value: 'name', label: 'Sort by: Name', subLabel: 'Name' }
+  { value: 'name', label: 'Sort by: Name', subLabel: 'Name' },
+  { value: 'newest', label: 'Sort by: Newest', subLabel: 'Newest' }
 ]
 
 const Option = props => {
