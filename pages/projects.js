@@ -71,8 +71,6 @@ class Home extends Component {
   render () {
     const { projects, filter } = this.state
 
-    console.log(projects)
-
     return (
       <div className='projects-container'>
         {/* <Banner /> */}

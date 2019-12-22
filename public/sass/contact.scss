@@ -1,0 +1,82 @@
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1px 0 30px;
+  text-align: center;
+  // background: #252934;
+}
+
+form {
+  /* display: block; */
+  width: 90%;
+  max-width: 500px;
+  margin: 30px auto 0;
+  /* padding: 0 20px; */
+}
+
+form p {
+  visibility: hidden;
+  height: 0;
+  margin: 0;
+}
+
+.visible {
+  visibility: visible;
+  /* height: 16px;  */
+  margin-bottom: 15px;
+}
+.hidden {
+  width: 0;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  visibility: hidden;
+}
+
+#sent {
+  color: green;
+}
+#incomplete, #error {
+  color: red;
+}
+
+input, textarea, button {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  border: 0;
+  padding: 10px 15px;
+  background: #d6d6d6;
+  font-size: 12pt;
+  margin-bottom: 3px;
+  color: #717171;
+}
+
+textarea {
+  min-height: 150px;
+  margin-bottom: 15px;
+  margin-right: 0 !important;
+  font-family: Helvetica;
+}
+
+button[type=submit] {
+  max-width: 100px;
+  border: 2px solid #d6d6d6;
+  background: transparent;
+  float: right;
+  cursor: pointer;
+}
+
+form>img {
+  width: 60px;
+  float: right;
+  visibility: hidden;
+}
+
+#contact>img {
+  display: block;
+  margin: 20px auto 0;
+  width: 50px;
+  cursor: pointer;
+}
