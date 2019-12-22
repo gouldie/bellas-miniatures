@@ -1,7 +1,7 @@
 import App from 'next/app'
 import Head from 'next/head'
 import React from 'react'
-import { HeaderAlt, Footer } from '../components'
+import { HeaderAlt, Header, HeaderAlt2, Footer } from '../components'
 import '../public/sass/main.scss'
 import '../public/sass/core.scss'
 
@@ -24,7 +24,7 @@ export default class MyApp extends App {
         <Head>
           <title>Bella's Miniatures</title>
         </Head>
-        <HeaderAlt />
+        <HeaderAlt2 />
         <Component {...pageProps} />
         <Footer />
       </>

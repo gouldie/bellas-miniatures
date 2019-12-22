@@ -67,7 +67,8 @@ const Header = () => {
   return (
     <header id='header'>
       <div className='logo'>
-        <Link href='/'><p>LOGO</p></Link>
+        {/* <Link href='/'><p>LOGO</p></Link> */}
+        <Link href='/'><img src='/logo.png' alt='alt text' style={{ width: '200px', display: 'flex' }} /></Link>
       </div>
       <div className='header-menu'>
         {Object.keys(routes).map((r, i) =>
