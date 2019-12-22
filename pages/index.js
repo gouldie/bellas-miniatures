@@ -38,7 +38,7 @@ class Home extends Component {
   }
 
   resizeImages = () => {
-    const projectList = document.getElementsByClassName('project')
+    const projectList = document.getElementsByClassName('gallery-image')
 
     for (let i = 0; i < projectList.length; i++) {
       projectList[i].style.height = projectList[i].offsetWidth * 0.8 + 'px'
@@ -82,7 +82,7 @@ class Home extends Component {
     return (
       <div className='home-container'>
         <p style={{ width: '800px', margin: '40px auto 35px', fontSize: '20px', padding: '0 5px' }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-        <div className='projects'>
+        <div className='gallery'>
           {projects.length > 0
             ? projects.map((p, i) => (
               <HomeImage
