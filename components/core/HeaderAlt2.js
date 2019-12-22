@@ -5,7 +5,7 @@ const img = require('../../public/logo.png')
 
 const routes = {
   home: '/',
-  about: '/about',
+  blog: '/blog',
   projects: '/projects',
   contact: '/contact'
 }

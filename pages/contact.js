@@ -28,7 +28,8 @@ class Contact extends Component {
           <img id='loader' src='public/imgs/loader.svg' />
         </form>
 
-        <img src="public/imgs/linkedin.svg" alt="linkedin icon" onClick='window.open("https://www.linkedin.com/in/matthew-gould/")'/>
+        {/* <img src="public/imgs/linkedin.svg" alt="linkedin icon" onClick='window.open("https://www.linkedin.com/in/matthew-gould/")'/> */}
+        <p>social media icons</p>
       </div>
     )
   }
