@@ -65,7 +65,6 @@ class Home extends Component {
 
     return (
       <div className='projects-container'>
-        {/* <Banner /> */}
         <div className='select-wrapper'>
           <Select
             instanceId='select-field'
@@ -81,6 +80,7 @@ class Home extends Component {
             ? projects.map((p, i) => (
               <Project
                 key={i}
+                id={p.sys.id}
                 title={p.fields.title}
                 image={p.fields.images[0].fields.file.url}
               />
