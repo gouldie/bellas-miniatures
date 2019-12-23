@@ -1,6 +1,6 @@
 .project-container {
   padding: 0 50px;
-  max-width: 1200px;
+  max-width: 800px;
   margin: 0 auto;
 
   >p {
@@ -9,5 +9,19 @@
 
   h1 {
     text-align: center;
+  }
+}
+
+.image-gallery {
+  margin-bottom: 30px;
+}
+
+.image-gallery-slides {
+  max-height: 440px;
+}
+
+.fullscreen {
+  .image-gallery-slides {
+    max-height: inherit;
   }
 }

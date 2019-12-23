@@ -1,6 +1,8 @@
 import { Component } from 'react'
 import { withRouter } from 'next/router'
+import ImageGallery from 'react-image-gallery'
 import '../../public/sass/project.scss'
+import 'react-image-gallery/styles/scss/image-gallery.scss'
 
 const client = require('contentful').createClient({
   space: process.env.SPACE_ID,
@@ -33,6 +35,12 @@ class Project extends Component {
   render () {
     const { project } = this.state
 
+    const images = project && project.images.map(i => ({
+      original: i.fields.file.url,
+      thumbnail: i.fields.file.url,
+      sizes: '100px'
+    }))
+
     return (
       <div className='project-container'>
         {project === null && <p>Loading</p>}
@@ -40,6 +48,8 @@ class Project extends Component {
         {project &&
           <div>
             <h1>{project.title}</h1>
+            <ImageGallery items={images} />
+            <p>{project.description}</p>
           </div>
         }
       </div>
