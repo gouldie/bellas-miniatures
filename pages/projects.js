@@ -44,6 +44,16 @@ class Home extends Component {
 
     for (let i = 0; i < projectList.length; i++) {
       projectList[i].style.height = projectList[i].offsetWidth * 0.8 + 'px'
+
+      const image = projectList[i].firstChild
+      const ratio = image.offsetWidth / image.offsetHeight
+      const galleryRatio = projectList[i].offsetWidth / projectList[i].offsetHeight
+
+      if (ratio < galleryRatio) {
+        image.style.width = '100%'
+      } else {
+        image.style.height = '100%'
+      }
     }
   }
 
@@ -82,7 +92,7 @@ class Home extends Component {
                 key={i}
                 id={p.sys.id}
                 title={p.fields.title}
-                image={p.fields.images[0].fields.file.url}
+                image={p.fields.images[0].fields.file.url + '?fit=pad'}
               />
             ))
             : null}

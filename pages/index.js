@@ -40,6 +40,16 @@ class Home extends Component {
 
     for (let i = 0; i < projectList.length; i++) {
       projectList[i].style.height = projectList[i].offsetWidth * 0.8 + 'px'
+
+      const image = projectList[i].firstChild
+      const ratio = image.offsetWidth / image.offsetHeight
+      const galleryRatio = projectList[i].offsetWidth / projectList[i].offsetHeight
+
+      if (ratio < galleryRatio) {
+        image.style.width = '100%'
+      } else {
+        image.style.height = '100%'
+      }
     }
   }
 
@@ -78,7 +88,7 @@ class Home extends Component {
               <HomeImage
                 key={i}
                 index={i}
-                image={p.fields.image.fields.file.url}
+                image={p.fields.image.fields.file.url + '?fit=fill'}
                 onClick={this.open}
               />
             ))
