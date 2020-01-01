@@ -5,7 +5,7 @@ import '../public/sass/blog.scss'
 const options = {
   renderNode: {
     'embedded-asset-block': (node) =>
-      <img style={{ width: '50%' }} src={`${node.data.target.fields.file.url}`}/>
+      <img style={{ width: '50%' }} src={`${node.data.target.fields.file.url}?fit=pad`}/>
   }
 }
 

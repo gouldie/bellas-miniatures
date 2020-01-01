@@ -92,7 +92,7 @@ class Home extends Component {
               <HomeImage
                 key={i}
                 index={i}
-                image={p.fields.image.fields.file.url + '?fit=fill'}
+                image={p.fields.image.fields.file.url + '?fit=pad'}
                 onClick={this.open}
               />
             ))
