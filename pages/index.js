@@ -30,8 +30,10 @@ class Home extends Component {
   async componentDidMount () {
     const contentType = await client.getContentType('galleryImage')
     const projects = await this.fetchEntriesForContentType(contentType)
-    this.setState({ projects })
-    this.resizeImages()
+    this.setState({ projects }, () => {
+      this.resizeImages()
+    })
+
     window.addEventListener('resize', this.resizeImages)
   }
 
@@ -42,13 +44,15 @@ class Home extends Component {
       projectList[i].style.height = projectList[i].offsetWidth * 0.8 + 'px'
 
       const image = projectList[i].firstChild
-      const ratio = image.offsetWidth / image.offsetHeight
-      const galleryRatio = projectList[i].offsetWidth / projectList[i].offsetHeight
+      image.onload = function () {
+        const ratio = image.offsetWidth / image.offsetHeight
+        const galleryRatio = projectList[i].offsetWidth / projectList[i].offsetHeight
 
-      if (ratio < galleryRatio) {
-        image.style.width = '100%'
-      } else {
-        image.style.height = '100%'
+        if (ratio < galleryRatio) {
+          image.style.width = '100%'
+        } else {
+          image.style.height = '100%'
+        }
       }
     }
   }
