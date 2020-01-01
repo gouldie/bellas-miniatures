@@ -24,9 +24,9 @@ const Header = () => {
   const pathname = useRouter().pathname
 
   return (
-    <div>
-      <header id='header-alt' style={{ flexDirection: 'row', width: '800px', margin: '0 auto' }}>
-        <div className='logo' style={{ width: '250px' }}>
+    <div id='header-alt'>
+      <header style={{ flexDirection: 'row', width: '800px', margin: '0 auto' }}>
+        <div className='logo'>
           {/* <h1>Miniature Modelling</h1> */}
           <img src='/logo.png' alt='alt text' style={{ width: '100%' }} />
         </div>

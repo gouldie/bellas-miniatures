@@ -5,6 +5,12 @@
   justify-content: space-between;
   padding: 10px;
   border-bottom: 1px solid grey;
+
+  .logo img {
+    width: 150px;
+    display: flex;
+    padding: 8px;
+  }
   
   .header-menu {
     display: flex;
@@ -98,14 +104,17 @@
 
 /* ALT HEADER */
 #header-alt {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 30px 0 20px;
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 0 20px;
+  }
 
   .logo {
     margin: 50px 0;
+    width: 250px;
   }
   
   .header-menu {
@@ -160,5 +169,39 @@ hr {
       margin: 5px 0;
       font-weight: 300;
     }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #header-alt {
+    header {
+      justify-content: space-evenly;
+    }
+    
+    .logo {
+      width: 150px;
+    }
+
+    .header-menu {
+      max-width: 450px;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #header-alt {
+    display: none;
+  }
+  .footer {
+    flex-direction: column;
+    >div {
+      text-align: center;
+    }
+  }
+}
+
+@media screen and (min-width: 801px) {
+  #header {
+    display: none;
   }
 }

@@ -68,13 +68,13 @@ const Header = () => {
     <header id='header'>
       <div className='logo'>
         {/* <Link href='/'><p>LOGO</p></Link> */}
-        <Link href='/'><img src='/logo.png' alt='alt text' style={{ width: '200px', display: 'flex' }} /></Link>
+        <Link href='/'><img src='/logo.png' alt='alt text' /></Link>
       </div>
-      <div className='header-menu'>
+      {/* <div className='header-menu'>
         {Object.keys(routes).map((r, i) =>
           <HeaderLink key={i} name={r} pathname={pathname} />
         )}
-      </div>
+      </div> */}
       <div className='burger-menu'>
         <BurgerMenu pathname={pathname} />
       </div>

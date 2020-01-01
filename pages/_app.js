@@ -24,6 +24,7 @@ export default class MyApp extends App {
         <Head>
           <title>Miniature Modelling</title>
         </Head>
+        <Header />
         <HeaderAlt2 />
         <Component {...pageProps} />
         <Footer />
