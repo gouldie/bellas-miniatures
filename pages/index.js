@@ -79,7 +79,7 @@ class Home extends Component {
 
     const images = projects && projects.map(p => {
       return {
-        src: p.fields.image.fields.file.url
+        src: p.fields.image.fields.file.url + '?fit=pad'
       }
     })
 
