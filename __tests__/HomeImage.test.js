@@ -6,16 +6,11 @@ import { HomeImage } from '../components'
 afterEach(cleanup)
 
 it('renders without crashing', () => {
-  const { container } = render(<HomeImage />)
-  expect(container.getElementsByTagName('img')).toHaveLength(1)
+  const { getByRole } = render(<HomeImage />)
+  expect(getByRole('img')).toBeDefined()
 })
 
 it('img src matches image prop', () => {
-  const { getByTestId } = render(<HomeImage image='test' />)
-  expect(getByTestId('image')).toHaveAttribute('src', 'test')
+  const { getByRole } = render(<HomeImage image='test' />)
+  expect(getByRole('img')).toHaveAttribute('src', 'test')
 })
-
-// it('matches snapshot', () => {
-//   const { asFragment } = render(<App />)
-//   expect(asFragment()).toMatchSnapshot()
-// })
