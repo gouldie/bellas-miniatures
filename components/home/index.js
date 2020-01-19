@@ -1,7 +1,6 @@
 import { Component } from 'react'
 import { HomeImage } from '../../components'
 import Carousel, { Modal, ModalGateway } from 'react-images'
-import '../../public/sass/home.scss'
 
 const FooterCaption = () => {
   return (

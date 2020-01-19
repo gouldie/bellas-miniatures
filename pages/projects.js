@@ -1,20 +1,6 @@
 import { Component } from 'react'
-import { Project } from '../components'
-import Select, { components } from 'react-select'
+import { Projects } from '../components'
 import '../public/sass/projects.scss'
-
-const options = [
-  { value: 'name', label: 'Sort by: Name', subLabel: 'Name' },
-  { value: 'newest', label: 'Sort by: Newest', subLabel: 'Newest' }
-]
-
-const Option = props => {
-  return (
-    <components.Option {...props}>
-      <div>{props.data.subLabel}</div>
-    </components.Option>
-  )
-}
 
 const client = require('contentful').createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
@@ -26,8 +12,7 @@ class Home extends Component {
     super()
 
     this.state = {
-      projects: [],
-      filter: { value: 'name', label: 'Sort by: Name', subLabel: 'Name' }
+      projects: []
     }
   }
 
@@ -35,28 +20,6 @@ class Home extends Component {
     const contentType = await client.getContentType('project')
     const projects = await this.fetchEntriesForContentType(contentType)
     this.setState({ projects })
-    this.resizeImages()
-    window.addEventListener('resize', this.resizeImages)
-  }
-
-  resizeImages = () => {
-    const projectList = document.getElementsByClassName('project')
-
-    for (let i = 0; i < projectList.length; i++) {
-      projectList[i].style.height = projectList[i].offsetWidth * 0.8 + 'px'
-
-      const image = projectList[i].firstChild
-      image.onload = function () {
-        const ratio = image.offsetWidth / image.offsetHeight
-        const galleryRatio = projectList[i].offsetWidth / projectList[i].offsetHeight
-
-        if (ratio < galleryRatio) {
-          image.style.width = '100%'
-        } else {
-          image.style.height = '100%'
-        }
-      }
-    }
   }
 
   fetchEntriesForContentType = async (contentType) => {
@@ -67,40 +30,10 @@ class Home extends Component {
     console.log(`Error getting Entries for ${contentType.name}.`)
   }
 
-  handleChange = filter => {
-    this.setState({ filter })
-    console.log('Option selected:', filter)
-  };
-
   render () {
-    const { projects, filter } = this.state
+    const { projects } = this.state
 
-    return (
-      <div className='projects-container'>
-        <div className='select-wrapper'>
-          <Select
-            instanceId='select-field'
-            value={filter}
-            onChange={this.handleChange}
-            options={options}
-            components={{ Option }}
-          />
-        </div>
-
-        <div className='projects'>
-          {projects.length > 0
-            ? projects.map((p, i) => (
-              <Project
-                key={i}
-                id={p.sys.id}
-                title={p.fields.title}
-                image={p.fields.images[0].fields.file.url + '?fit=pad'}
-              />
-            ))
-            : null}
-        </div>
-      </div>
-    )
+    return <Projects projects={projects} />
   }
 }
 
