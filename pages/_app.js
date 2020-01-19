@@ -1,11 +1,12 @@
 import App from 'next/app'
 import Head from 'next/head'
 import React from 'react'
-import { HeaderAlt, Header, HeaderAlt2, Footer } from '../components'
+import { HeaderMob, Header, Footer } from '../components'
+import { withRouter } from 'next/router'
 import '../public/sass/main.scss'
 import '../public/sass/core.scss'
 
-export default class MyApp extends App {
+class MyApp extends App {
   static async getInitialProps ({ Component, ctx }) {
     let pageProps = {}
 
@@ -17,18 +18,20 @@ export default class MyApp extends App {
   }
 
   render () {
-    const { Component, pageProps } = this.props
+    const { Component, pageProps, router } = this.props
 
     return (
       <>
         <Head>
           <title>Miniature Modelling</title>
         </Head>
-        <Header />
-        <HeaderAlt2 />
+        <HeaderMob pathname={router.pathname} />
+        <Header pathname={router.pathname} />
         <Component {...pageProps} />
         <Footer />
       </>
     )
   }
 }
+
+export default withRouter(MyApp)

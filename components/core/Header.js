@@ -1,53 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { slide as Menu } from 'react-burger-menu'
 
 const routes = {
-  about: '/about',
+  home: '/',
+  blog: '/blog',
   projects: '/projects',
   contact: '/contact'
-}
-
-class BurgerMenu extends Component {
-  constructor () {
-    super()
-
-    this.state = {
-      menuOpen: false
-    }
-  }
-
-  componentDidMount () {
-    document.getElementsByClassName('bm-overlay')[0].addEventListener('touchmove', () => {
-      this.closeMenu()
-    })
-  }
-
-  handleStateChange = (state) => {
-    this.setState({ menuOpen: state.isOpen })
-  }
-
-  closeMenu = () => {
-    this.setState({ menuOpen: false })
-  }
-
-  render () {
-    const { pathname } = this.props
-    const { menuOpen } = this.state
-
-    return (
-      <Menu
-        right
-        isOpen={menuOpen}
-        onStateChange={state => this.handleStateChange(state)}
-      >
-        {Object.keys(routes).map((r, i) =>
-          <HeaderLink key={i} name={r} pathname={pathname} closeMenu={this.closeMenu} />
-        )}
-      </Menu>
-    )
-  }
 }
 
 const HeaderLink = ({ name, pathname, closeMenu }) => (
@@ -61,25 +19,23 @@ const HeaderLink = ({ name, pathname, closeMenu }) => (
   </Link>
 )
 
-const Header = () => {
-  const pathname = useRouter().pathname
-
+const Header = ({ pathname }) => {
   return (
-    <header id='header'>
-      <div className='logo'>
-        {/* <Link href='/'><p>LOGO</p></Link> */}
-        <Link href='/'><img src='/logo.png' alt='alt text' /></Link>
-      </div>
-      {/* <div className='header-menu'>
-        {Object.keys(routes).map((r, i) =>
-          <HeaderLink key={i} name={r} pathname={pathname} />
-        )}
-      </div> */}
-      <div className='burger-menu'>
-        <BurgerMenu pathname={pathname} />
-      </div>
+    <div id='header-alt'>
+      <header style={{ flexDirection: 'row', width: '800px', margin: '0 auto' }}>
+        <div className='logo'>
+          {/* <h1>Miniature Modelling</h1> */}
+          <img src='/logo.png' alt='alt text' style={{ width: '100%' }} />
+        </div>
+        <div className='header-menu'>
+          {Object.keys(routes).map((r, i) =>
+            <HeaderLink key={i} name={r} pathname={pathname} />
+          )}
+        </div>
 
-    </header>
+      </header>
+      <hr style={{ width: '800px', marginTop: '-30px', marginBottom: '30px' }} />
+    </div>
   )
 }
 

@@ -10,7 +10,7 @@ it('renders without crashing', () => {
   expect(getByRole('img')).toBeDefined()
 })
 
-it('img src matches image prop', () => {
+it('props assigned correctly', () => {
   const { getByRole, getByText } = render(<Project image='testimage' title='testtitle' />)
   expect(getByRole('img')).toHaveAttribute('src', 'testimage')
   expect(getByText('testtitle')).toBeDefined()

@@ -17,8 +17,8 @@ const Option = props => {
 }
 
 const client = require('contentful').createClient({
-  space: process.env.SPACE_ID,
-  accessToken: process.env.ACCESS_TOKEN
+  space: process.env.CONTENTFUL_SPACE_ID,
+  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 })
 
 class Home extends Component {
