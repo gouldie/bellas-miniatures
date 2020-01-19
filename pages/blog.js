@@ -1,42 +1,25 @@
 import { Component } from 'react'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { Blog } from '../components'
 import '../public/sass/blog.scss'
-
-const options = {
-  renderNode: {
-    'embedded-asset-block': (node) =>
-      <img style={{ width: '50%' }} src={`${node.data.target.fields.file.url}?fit=pad`}/>
-  }
-}
-
-const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
-
-const formatDate = (date) => {
-  const month = months[date.getMonth()]
-  const day = ('0' + date.getDate()).slice(-2)
-  const year = date.getFullYear()
-
-  return `${month}, ${day} ${year}`
-}
 
 const client = require('contentful').createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 })
 
-class Blog extends Component {
+class BlogContainer extends Component {
   constructor () {
     super()
 
     this.state = {
-      blogPosts: []
+      posts: []
     }
   }
 
   async componentDidMount () {
     const contentType = await client.getContentType('blogPost')
-    const blogPosts = await this.fetchEntriesForContentType(contentType)
-    this.setState({ blogPosts })
+    const posts = await this.fetchEntriesForContentType(contentType)
+    this.setState({ posts })
   }
 
   fetchEntriesForContentType = async (contentType) => {
@@ -48,24 +31,10 @@ class Blog extends Component {
   }
 
   render () {
-    const { blogPosts } = this.state
+    const { posts } = this.state
 
-    console.log('bp', blogPosts)
-
-    return (
-      <div className='blog-container'>
-        {
-          blogPosts.map((b, i) => (
-            <div className='blog-post' key={i}>
-              <p className='date'>{formatDate(new Date(b.sys.createdAt))}</p>
-              <p className='title'>{b.fields.title}</p>
-              {documentToReactComponents(b.fields.description, options)}
-            </div>
-          ))
-        }
-      </div>
-    )
+    return <Blog posts={posts} />
   }
 }
 
-export default Blog
+export default BlogContainer

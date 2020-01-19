@@ -7,7 +7,7 @@ const client = require('contentful').createClient({
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 })
 
-class Home extends Component {
+class ProjectsContainer extends Component {
   constructor () {
     super()
 
@@ -37,4 +37,4 @@ class Home extends Component {
   }
 }
 
-export default Home
+export default ProjectsContainer
