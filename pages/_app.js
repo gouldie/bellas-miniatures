@@ -6,6 +6,13 @@ import { withRouter } from 'next/router'
 import '../public/sass/main.scss'
 import '../public/sass/core.scss'
 
+const routes = {
+  home: '/',
+  blog: '/blog',
+  projects: '/projects',
+  contact: '/contact'
+}
+
 class MyApp extends App {
   static async getInitialProps ({ Component, ctx }) {
     let pageProps = {}
@@ -25,8 +32,8 @@ class MyApp extends App {
         <Head>
           <title>Miniature Modelling</title>
         </Head>
-        <HeaderMob pathname={router.pathname} />
-        <Header pathname={router.pathname} />
+        <HeaderMob pathname={router.pathname} routes={routes} />
+        <Header pathname={router.pathname} routes={routes} />
         <Component {...pageProps} />
         <Footer />
       </>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, cleanup, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
-import { Header } from '../components'
+import { HeaderMob } from '../components'
 import Router from 'next/router'
 
 afterEach(cleanup)
@@ -22,9 +22,9 @@ it('should render route names', () => {
     about: '/about'
   }
 
-  const { getByTestId } = render(<Header pathname='/' routes={routes} />)
+  const { container } = render(<HeaderMob pathname='/' routes={routes} />)
 
-  expect(getByTestId('list').children).toHaveLength(Object.keys(routes).length)
+  expect(container.getElementsByClassName('bm-item-list')[0].children).toHaveLength(Object.keys(routes).length)
 })
 
 it('should navigate to the blog page', async () => {
@@ -33,7 +33,7 @@ it('should navigate to the blog page', async () => {
     blog: '/blog'
   }
 
-  const { getByText } = render(<Header pathname='/' routes={routes} />)
+  const { getByText } = render(<HeaderMob pathname='/' routes={routes} />)
   fireEvent.click(getByText('blog'))
   expect(routerPushed).toHaveBeenCalledWith('/blog')
 })

@@ -2,12 +2,6 @@ import React, { Component } from 'react'
 import Link from 'next/link'
 import { slide as Menu } from 'react-burger-menu'
 
-const routes = {
-  about: '/about',
-  projects: '/projects',
-  contact: '/contact'
-}
-
 class BurgerMenu extends Component {
   constructor () {
     super()
@@ -32,7 +26,7 @@ class BurgerMenu extends Component {
   }
 
   render () {
-    const { pathname } = this.props
+    const { pathname, routes } = this.props
     const { menuOpen } = this.state
 
     return (
@@ -42,14 +36,14 @@ class BurgerMenu extends Component {
         onStateChange={state => this.handleStateChange(state)}
       >
         {Object.keys(routes).map((r, i) =>
-          <HeaderLink key={i} name={r} pathname={pathname} closeMenu={this.closeMenu} />
+          <HeaderLink key={i} name={r} pathname={pathname} closeMenu={this.closeMenu} routes={routes} />
         )}
       </Menu>
     )
   }
 }
 
-const HeaderLink = ({ name, pathname, closeMenu }) => (
+const HeaderLink = ({ name, pathname, closeMenu, routes }) => (
   <Link href={routes[name]}>
     <p
       className={pathname === routes[name] ? 'selected' : ''}
@@ -60,14 +54,14 @@ const HeaderLink = ({ name, pathname, closeMenu }) => (
   </Link>
 )
 
-const Header = ({ pathname }) => {
+const Header = ({ pathname, routes }) => {
   return (
     <header id='header'>
       <div className='logo'>
         <Link href='/'><img src='/logo.png' alt='alt text' /></Link>
       </div>
       <div className='burger-menu'>
-        <BurgerMenu pathname={pathname} />
+        <BurgerMenu pathname={pathname} routes={routes} />
       </div>
 
     </header>

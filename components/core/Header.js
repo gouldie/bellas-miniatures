@@ -1,14 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-const routes = {
-  home: '/',
-  blog: '/blog',
-  projects: '/projects',
-  contact: '/contact'
-}
-
-const HeaderLink = ({ name, pathname, closeMenu }) => (
+const HeaderLink = ({ name, pathname, closeMenu, routes }) => (
   <Link href={routes[name]}>
     <p
       className={pathname === routes[name] ? 'selected' : ''}
@@ -19,7 +12,7 @@ const HeaderLink = ({ name, pathname, closeMenu }) => (
   </Link>
 )
 
-const Header = ({ pathname }) => {
+const Header = ({ pathname, routes }) => {
   return (
     <div id='header-alt'>
       <header style={{ flexDirection: 'row', width: '800px', margin: '0 auto' }}>
@@ -27,9 +20,9 @@ const Header = ({ pathname }) => {
           {/* <h1>Miniature Modelling</h1> */}
           <img src='/logo.png' alt='alt text' style={{ width: '100%' }} />
         </div>
-        <div className='header-menu'>
+        <div className='header-menu' data-testid='list'>
           {Object.keys(routes).map((r, i) =>
-            <HeaderLink key={i} name={r} pathname={pathname} />
+            <HeaderLink key={i} name={r} pathname={pathname} routes={routes} />
           )}
         </div>
 
