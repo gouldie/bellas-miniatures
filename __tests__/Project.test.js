@@ -27,7 +27,7 @@ it('props assigned correctly', () => {
 })
 
 it('should navigate on click', async () => {
-  const { getByRole } = render(<Project key={1} id={1} title='testtitle' image='testimage' />)
+  const { getByRole } = render(<Project id={1} title='testtitle' image='testimage' />)
   fireEvent.click(getByRole('img'))
   expect(routerPushed).toHaveBeenCalledWith('/project/[id]', '/project/' + 1)
 })
