@@ -89,7 +89,6 @@ class Home extends Component {
             <Modal onClose={this.close}>
               <Carousel currentIndex={photoIndex} views={images} components={{ FooterCaption }} />
             </Modal>
-
           )}
         </ModalGateway>
       </div>
