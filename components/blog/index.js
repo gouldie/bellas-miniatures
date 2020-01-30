@@ -4,7 +4,9 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 const options = {
   renderNode: {
     'embedded-asset-block': (node) =>
-      <img style={{ width: '50%' }} src={`${node.data.target.fields.file.url}?fit=pad`}/>
+      <img style={{ width: '50%' }} src={`${node.data.target.fields.file.url}?fit=pad`}/>,
+    paragraph: (node, children) =>
+      <p className='text'>{children}</p>
   }
 }
 

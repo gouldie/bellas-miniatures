@@ -31,3 +31,24 @@
   text-decoration: none;
   border-bottom: none;
 }
+
+@media screen and (max-width: 800px) {
+  .blog-container {
+    padding: 0 40px;
+  }
+  .title {
+    font-size: 30px;
+    letter-spacing: .01em;
+  }
+  .text {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .blog-container {
+    padding: 0 30px;
+  }
+  .title {
+    font-size: 20px;
+  }
+}
