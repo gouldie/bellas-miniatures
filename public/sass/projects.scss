@@ -1,5 +1,5 @@
 .projects-container {
-  padding: 0 50px;
+  padding: 0 40px;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -86,8 +86,11 @@
 }
 
 @media screen and (max-width: 600px) {
+  .projects-container {
+    padding: 0 20px;
+  }
   .project-wrapper {
-    max-width: 420px;
+    max-width: 415px;
     width: 100%;
     margin: 0 auto;
   }

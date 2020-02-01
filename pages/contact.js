@@ -30,10 +30,9 @@ class Contact extends Component {
 
         {/* <img src="public/imgs/linkedin.svg" alt="linkedin icon" onClick='window.open("https://www.linkedin.com/in/matthew-gould/")'/> */}
         <div className='social-media-icons'>
-          <i className="fab fa-twitter fa-2x"></i>
-          <i className="fab fa-linkedin fa-2x"></i>
+          <a href='https://twitter.com/?lang=en-gb' target='_blank'><i className="fab fa-twitter fa-2x"></i></a>
+          <a href='https://www.linkedin.com/' target=''></a> <i className="fab fa-linkedin fa-2x"></i>
         </div>
-
       </div>
     )
   }
