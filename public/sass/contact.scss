@@ -42,7 +42,7 @@ form p {
 
 input, textarea, button {
   display: block;
-  width: 100%;
+  // width: 100%;
   box-sizing: border-box;
   outline: none;
   border: 0;
@@ -51,6 +51,10 @@ input, textarea, button {
   font-size: 12pt;
   margin-bottom: 3px;
   color: #717171;
+}
+
+input, textarea {
+  width: 100%;
 }
 
 textarea {
