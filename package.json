@@ -20,7 +20,7 @@
     "contentful": "^7.10.0",
     "dotenv": "^8.2.0",
     "jarallax": "^1.12.0",
-    "next": "^9.1.4",
+    "next": "^9.2.1",
     "node-sass": "^4.13.0",
     "react": "^16.12.0",
     "react-burger-menu": "^2.6.13",
@@ -29,10 +29,8 @@
     "react-image-gallery": "^1.0.3",
     "react-images": "^1.1.0-beta.0",
     "react-loader-spinner": "^3.1.5",
-    "react-parallax": "^2.2.4",
     "react-select": "^3.0.8",
     "react-slick": "^0.25.2",
-    "simple-parallax-js": "^5.1.0",
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
