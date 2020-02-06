@@ -55,7 +55,7 @@ class Contact extends Component {
         <hr />
 
         { submitting && <Loader margin='20px 0' /> }
-        { submitted && <p style={{ color: 'green', margin: '20px 0 30px' }}>Your message has been sent. We'll be in touch!</p> }
+        { submitted && <p data-testid='success' style={{ color: 'green', margin: '20px 0 30px' }}>Your message has been sent. We'll be in touch!</p> }
         { !submitting && !submitted &&
           <form onSubmit={this.submit}>
             <input name='name' type='text' placeholder='Name' value={name} onChange={this.onChangeName} />
