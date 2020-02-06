@@ -69,28 +69,30 @@ class Home extends Component {
     })
 
     return (
-      <div className='home-container'>
-        <p style={{ maxWidth: '800px', margin: '40px auto 35px', fontSize: '20px', padding: '0 5px', textAlign: 'center' }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-        <div className='gallery'>
-          {projects.length > 0
-            ? projects.map((p, i) => (
-              <HomeImage
-                key={i}
-                index={i}
-                image={p.fields.image.fields.file.url + '?fit=pad'}
-                onClick={this.open}
-              />
-            ))
-            : null}
-        </div>
+      <div className='home-wrapper'>
+        <div className='home-container'>
+          <p style={{ maxWidth: '800px', margin: '40px auto 35px', fontSize: '20px', padding: '0 5px', textAlign: 'center' }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+          <div className='gallery'>
+            {projects.length > 0
+              ? projects.map((p, i) => (
+                <HomeImage
+                  key={i}
+                  index={i}
+                  image={p.fields.image.fields.file.url + '?fit=pad'}
+                  onClick={this.open}
+                />
+              ))
+              : null}
+          </div>
 
-        <ModalGateway>
-          {isOpen && (
-            <Modal onClose={this.close}>
-              <Carousel currentIndex={photoIndex} views={images} components={{ FooterCaption }} />
-            </Modal>
-          )}
-        </ModalGateway>
+          <ModalGateway>
+            {isOpen && (
+              <Modal onClose={this.close}>
+                <Carousel currentIndex={photoIndex} views={images} components={{ FooterCaption }} />
+              </Modal>
+            )}
+          </ModalGateway>
+        </div>
       </div>
     )
   }

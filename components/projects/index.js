@@ -70,31 +70,33 @@ class Projects extends Component {
     }
 
     return (
-      <div className='projects-container'>
-        <div className='select-wrapper'>
-          <Select
-            instanceId='select-field'
-            value={filter}
-            onChange={this.handleChange}
-            options={options}
-            components={{ Option }}
-          />
-        </div>
+      <div className='projects-wrapper'>
+        <div className='projects-container'>
+          <div className='select-wrapper'>
+            <Select
+              instanceId='select-field'
+              value={filter}
+              onChange={this.handleChange}
+              options={options}
+              components={{ Option }}
+            />
+          </div>
 
-        <div className='projects'>
-          <FlipMove typeName={null}>
-            {projects.length > 0
-              ? projects.map((p, i) => (
-                <Project
-                  id={p.sys.id}
-                  title={p.fields.title}
-                  image={p.fields.images[0].fields.file.url + '?fit=pad'}
-                  key={p.sys.id}
-                />
-              ))
-              : null}
-          </FlipMove>
+          <div className='projects'>
+            <FlipMove typeName={null}>
+              {projects.length > 0
+                ? projects.map((p, i) => (
+                  <Project
+                    id={p.sys.id}
+                    title={p.fields.title}
+                    image={p.fields.images[0].fields.file.url + '?fit=pad'}
+                    key={p.sys.id}
+                  />
+                ))
+                : null}
+            </FlipMove>
 
+          </div>
         </div>
       </div>
     )
