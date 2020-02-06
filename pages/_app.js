@@ -28,7 +28,7 @@ class MyApp extends App {
     const { Component, pageProps, router } = this.props
 
     return (
-      <>
+      <div className='root'>
         <Head>
           <title>Miniature Modelling</title>
         </Head>
@@ -36,7 +36,7 @@ class MyApp extends App {
         <Header pathname={router.pathname} routes={routes} />
         <Component {...pageProps} />
         <Footer />
-      </>
+      </div>
     )
   }
 }
