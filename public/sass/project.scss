@@ -25,3 +25,10 @@
     max-height: inherit;
   }
 }
+
+@media screen and (max-width: 1200px) {
+  .project-container {
+    max-width: 90%;
+    padding: 0;
+  }
+}
