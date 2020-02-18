@@ -14,6 +14,8 @@
 
 .image-gallery {
   margin-bottom: 30px;
+  display: flex;
+  align-items: center;
 }
 
 .image-gallery-slides {
@@ -26,9 +28,29 @@
   }
 }
 
+.image-gallery-content {
+  max-width: 100%;
+}
+
+.image-gallery-content .image-gallery-slide .image-gallery-image {
+  max-height: inherit !important;
+}
+
 @media screen and (max-width: 1200px) {
   .project-container {
-    max-width: 90%;
+    max-width: 70%;
     padding: 0;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .project-container {
+    max-width: 80%;
+  }
+}
+
+@media screen and (max-width: 600) {
+  .project-container {
+    max-width: 90%;
   }
 }
