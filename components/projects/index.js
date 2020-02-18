@@ -79,6 +79,7 @@ class Projects extends Component {
               onChange={this.handleChange}
               options={options}
               components={{ Option }}
+              isSearchable={false}
             />
           </div>
 
