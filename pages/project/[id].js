@@ -3,6 +3,7 @@ import { withRouter } from 'next/router'
 import ImageGallery from 'react-image-gallery'
 import '../../public/sass/project.scss'
 import 'react-image-gallery/styles/scss/image-gallery.scss'
+import { Loader } from '../../components'
 
 const client = require('contentful').createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
@@ -43,7 +44,7 @@ class Project extends Component {
 
     return (
       <div className='project-container'>
-        {project === null && <p>Loading</p>}
+        {project === null && <Loader margin='30px 0 0' />}
         {project === false && <p>No project found.</p>}
         {project &&
           <div>
