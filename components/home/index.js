@@ -60,7 +60,7 @@ class Home extends Component {
 
   render () {
     const { isOpen, photoIndex } = this.state
-    const { projects } = this.props
+    const { projects, text } = this.props
 
     const images = projects && projects.map(p => {
       return {
@@ -71,7 +71,7 @@ class Home extends Component {
     return (
       <div className='home-wrapper'>
         <div className='home-container'>
-          <p style={{ maxWidth: '800px', margin: '40px auto 35px', fontSize: '20px', padding: '0 5px', textAlign: 'center' }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+          {text && <p style={{ maxWidth: '800px', margin: '20px auto 40px', fontSize: '20px', padding: '0 5px', textAlign: 'center' }}>{text}</p>}
           <div className='gallery'>
             {projects.length > 0
               ? projects.map((p, i) => (

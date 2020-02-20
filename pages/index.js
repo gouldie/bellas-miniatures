@@ -12,14 +12,19 @@ class HomeContainer extends Component {
     super()
 
     this.state = {
-      projects: []
+      projects: [],
+      text: null
     }
   }
 
   async componentDidMount () {
-    const contentType = await client.getContentType('galleryImage')
-    const projects = await this.fetchEntriesForContentType(contentType)
-    this.setState({ projects })
+    const contentTypeGallery = await client.getContentType('galleryImage')
+    const contentTypeText = await client.getContentType('text')
+    const projects = await this.fetchEntriesForContentType(contentTypeGallery)
+    const text = await this.fetchEntriesForContentType(contentTypeText)
+    const homePageText = text.find(t => t.fields.name === 'Home Page Title')
+
+    this.setState({ projects, text: homePageText && homePageText.fields.text })
   }
 
   fetchEntriesForContentType = async (contentType) => {
@@ -32,9 +37,9 @@ class HomeContainer extends Component {
   }
 
   render () {
-    const { projects } = this.state
+    const { projects, text } = this.state
 
-    return <Home projects={projects} />
+    return <Home projects={projects} text={text} />
   }
 }
 
