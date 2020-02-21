@@ -11,7 +11,7 @@ export default () => {
   const [posts, setPosts] = useState([])
 
   useEffect(() => {
-    async function fetchData () {
+    const fetchData = async () => {
       const contentType = await client.getContentType('blogPost')
       const posts = await fetchEntriesForContentType(contentType)
       setPosts(posts)

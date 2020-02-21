@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { useState, useEffect } from 'react'
 import { Home } from '../components'
 import '../public/sass/home.scss'
 
@@ -7,27 +7,26 @@ const client = require('contentful').createClient({
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 })
 
-class HomeContainer extends Component {
-  constructor () {
-    super()
+export default () => {
+  const [projects, setProjects] = useState([])
+  const [text, setText] = useState(null)
 
-    this.state = {
-      projects: [],
-      text: null
+  useEffect(() => {
+    const fetchData = async () => {
+      const contentTypeGallery = await client.getContentType('galleryImage')
+      const contentTypeText = await client.getContentType('text')
+      const projects = await fetchEntriesForContentType(contentTypeGallery)
+      const text = await fetchEntriesForContentType(contentTypeText)
+      const homePageText = text.find(t => t.fields.name === 'Home Page Title')
+
+      setProjects(projects)
+      setText(homePageText && homePageText.fields.text)
     }
-  }
 
-  async componentDidMount () {
-    const contentTypeGallery = await client.getContentType('galleryImage')
-    const contentTypeText = await client.getContentType('text')
-    const projects = await this.fetchEntriesForContentType(contentTypeGallery)
-    const text = await this.fetchEntriesForContentType(contentTypeText)
-    const homePageText = text.find(t => t.fields.name === 'Home Page Title')
+    fetchData()
+  }, [])
 
-    this.setState({ projects, text: homePageText && homePageText.fields.text })
-  }
-
-  fetchEntriesForContentType = async (contentType) => {
+  const fetchEntriesForContentType = async (contentType) => {
     const entries = await client.getEntries({
       content_type: contentType.sys.id,
       limit: 12
@@ -36,11 +35,5 @@ class HomeContainer extends Component {
     console.log(`Error getting Entries for ${contentType.name}.`)
   }
 
-  render () {
-    const { projects, text } = this.state
-
-    return <Home projects={projects} text={text} />
-  }
+  return <Home projects={projects} text={text} />
 }
-
-export default HomeContainer
