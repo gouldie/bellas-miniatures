@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { useState, useEffect } from 'react'
 import { Projects } from '../components'
 import '../public/sass/projects.scss'
 
@@ -7,22 +7,20 @@ const client = require('contentful').createClient({
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 })
 
-class ProjectsContainer extends Component {
-  constructor () {
-    super()
+export default () => {
+  const [projects, setProjects] = useState([])
 
-    this.state = {
-      projects: []
+  useEffect(() => {
+    const fetchData = async () => {
+      const contentType = await client.getContentType('project')
+      const projects = await fetchEntriesForContentType(contentType)
+      setProjects(projects)
     }
-  }
 
-  async componentDidMount () {
-    const contentType = await client.getContentType('project')
-    const projects = await this.fetchEntriesForContentType(contentType)
-    this.setState({ projects })
-  }
+    fetchData()
+  }, [])
 
-  fetchEntriesForContentType = async (contentType) => {
+  const fetchEntriesForContentType = async (contentType) => {
     const entries = await client.getEntries({
       content_type: contentType.sys.id
     })
@@ -30,11 +28,5 @@ class ProjectsContainer extends Component {
     console.log(`Error getting Entries for ${contentType.name}.`)
   }
 
-  render () {
-    const { projects } = this.state
-
-    return <Projects projects={projects} />
-  }
+  return <Projects projects={projects} />
 }
-
-export default ProjectsContainer
