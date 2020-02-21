@@ -1,46 +1,27 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { slide as Menu } from 'react-burger-menu'
 
-class BurgerMenu extends Component {
-  constructor () {
-    super()
+const BurgerMenu = ({ pathname, routes }) => {
+  const [menuOpen, setMenuOpen] = useState(false)
 
-    this.state = {
-      menuOpen: false
-    }
-  }
-
-  componentDidMount () {
+  useEffect(() => {
     document.getElementsByClassName('bm-overlay')[0].addEventListener('touchmove', () => {
       this.closeMenu()
     })
-  }
+  }, [])
 
-  handleStateChange = (state) => {
-    this.setState({ menuOpen: state.isOpen })
-  }
-
-  closeMenu = () => {
-    this.setState({ menuOpen: false })
-  }
-
-  render () {
-    const { pathname, routes } = this.props
-    const { menuOpen } = this.state
-
-    return (
-      <Menu
-        right
-        isOpen={menuOpen}
-        onStateChange={state => this.handleStateChange(state)}
-      >
-        {Object.keys(routes).map((r, i) =>
-          <HeaderLink key={i} name={r} pathname={pathname} closeMenu={this.closeMenu} routes={routes} />
-        )}
-      </Menu>
-    )
-  }
+  return (
+    <Menu
+      right
+      isOpen={menuOpen}
+      onStateChange={({ isOpen }) => setMenuOpen(isOpen)}
+    >
+      {Object.keys(routes).map((r, i) =>
+        <HeaderLink key={i} name={r} pathname={pathname} closeMenu={() => setMenuOpen(false)} routes={routes} />
+      )}
+    </Menu>
+  )
 }
 
 const HeaderLink = ({ name, pathname, closeMenu, routes }) => (
@@ -54,18 +35,16 @@ const HeaderLink = ({ name, pathname, closeMenu, routes }) => (
   </Link>
 )
 
-const Header = ({ pathname, routes }) => {
-  return (
-    <header id='header'>
-      <div className='logo'>
-        <Link href='/'><img src='/logo.png' alt='alt text' /></Link>
-      </div>
-      <div className='burger-menu'>
-        <BurgerMenu pathname={pathname} routes={routes} />
-      </div>
+const Header = ({ pathname, routes }) => (
+  <header id='header'>
+    <div className='logo'>
+      <Link href='/'><img src='/logo.png' alt='alt text' /></Link>
+    </div>
+    <div className='burger-menu'>
+      <BurgerMenu pathname={pathname} routes={routes} />
+    </div>
 
-    </header>
-  )
-}
+  </header>
+)
 
 export default Header

@@ -1,5 +1,7 @@
-import { Component } from 'react'
+import React from 'react'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+
+const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
 
 const options = {
   renderNode: {
@@ -10,8 +12,6 @@ const options = {
   }
 }
 
-const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
-
 const formatDate = (date) => {
   const month = months[date.getMonth()]
   const day = ('0' + date.getDate()).slice(-2)
@@ -20,24 +20,16 @@ const formatDate = (date) => {
   return `${month}, ${day} ${year}`
 }
 
-class Blog extends Component {
-  render () {
-    const { posts } = this.props
-
-    return (
-      <div className='blog-container'>
-        {
-          posts.map((b, i) => (
-            <div className='blog-post' key={i}>
-              <p className='date'>{formatDate(new Date(b.sys.createdAt))}</p>
-              <p className='title'>{b.fields.title}</p>
-              {documentToReactComponents(b.fields.description, options)}
-            </div>
-          ))
-        }
-      </div>
-    )
-  }
-}
-
-export default Blog
+export default ({ posts }) => (
+  <div className='blog-container'>
+    {
+      posts.map((b, i) => (
+        <div className='blog-post' key={i}>
+          <p className='date'>{formatDate(new Date(b.sys.createdAt))}</p>
+          <p className='title'>{b.fields.title}</p>
+          {documentToReactComponents(b.fields.description, options)}
+        </div>
+      ))
+    }
+  </div>
+)
