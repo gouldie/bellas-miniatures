@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { useState, useEffect } from 'react'
 import { HomeImage } from '../../components'
 import Carousel, { Modal, ModalGateway } from 'react-images'
 
@@ -10,27 +10,19 @@ const FooterCaption = () => {
   )
 }
 
-class Home extends Component {
-  constructor () {
-    super()
+export default ({ projects, text }) => {
+  const [photoIndex, setPhotoIndex] = useState(0)
+  const [isOpen, setIsOpen] = useState(false)
 
-    this.state = {
-      photoIndex: 0,
-      isOpen: false
-    }
-  }
+  useEffect(() => {
+    window.addEventListener('resize', resizeImages)
+  }, [])
 
-  componentDidMount () {
-    window.addEventListener('resize', this.resizeImages)
-  }
+  useEffect(() => {
+    resizeImages()
+  }, [projects])
 
-  componentDidUpdate (nextState) {
-    if (this.state.projects !== nextState.projects) {
-      this.resizeImages()
-    }
-  }
-
-  resizeImages = () => {
+  const resizeImages = () => {
     const projectList = document.getElementsByClassName('gallery-image')
 
     for (let i = 0; i < projectList.length; i++) {
@@ -50,52 +42,46 @@ class Home extends Component {
     }
   }
 
-  open = (i) => {
-    this.setState({ isOpen: true, photoIndex: i })
+  const open = (i) => {
+    setIsOpen(true)
+    setPhotoIndex(i)
   }
 
-  close = () => {
-    this.setState({ isOpen: false })
+  const close = () => {
+    setIsOpen(false)
   }
 
-  render () {
-    const { isOpen, photoIndex } = this.state
-    const { projects, text } = this.props
+  const images = projects && projects.map(p => {
+    return {
+      src: p.fields.image.fields.file.url + '?fit=pad'
+    }
+  })
 
-    const images = projects && projects.map(p => {
-      return {
-        src: p.fields.image.fields.file.url + '?fit=pad'
-      }
-    })
-
-    return (
-      <div className='home-wrapper'>
-        <div className='home-container'>
-          {text && <p style={{ maxWidth: '800px', margin: '20px auto 40px', fontSize: '20px', padding: '0 5px', textAlign: 'center' }}>{text}</p>}
-          <div className='gallery'>
-            {projects.length > 0
-              ? projects.map((p, i) => (
-                <HomeImage
-                  key={i}
-                  index={i}
-                  image={p.fields.image.fields.file.url + '?fit=pad'}
-                  onClick={this.open}
-                />
-              ))
-              : null}
-          </div>
-
-          <ModalGateway>
-            {isOpen && (
-              <Modal onClose={this.close}>
-                <Carousel currentIndex={photoIndex} views={images} components={{ FooterCaption }} />
-              </Modal>
-            )}
-          </ModalGateway>
+  return (
+    <div className='home-wrapper'>
+      <div className='home-container'>
+        {text && <p style={{ maxWidth: '800px', margin: '20px auto 40px', fontSize: '20px', padding: '0 5px', textAlign: 'center' }}>{text}</p>}
+        <div className='gallery'>
+          {projects.length > 0
+            ? projects.map((p, i) => (
+              <HomeImage
+                key={i}
+                index={i}
+                image={p.fields.image.fields.file.url + '?fit=pad'}
+                onClick={open}
+              />
+            ))
+            : null}
         </div>
-      </div>
-    )
-  }
-}
 
-export default Home
+        <ModalGateway>
+          {isOpen && (
+            <Modal onClose={close}>
+              <Carousel currentIndex={photoIndex} views={images} components={{ FooterCaption }} />
+            </Modal>
+          )}
+        </ModalGateway>
+      </div>
+    </div>
+  )
+}
