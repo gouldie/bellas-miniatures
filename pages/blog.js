@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { useState, useEffect } from 'react'
 import { Blog } from '../components'
 import '../public/sass/blog.scss'
 
@@ -7,22 +7,20 @@ const client = require('contentful').createClient({
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 })
 
-class BlogContainer extends Component {
-  constructor () {
-    super()
+export default () => {
+  const [posts, setPosts] = useState([])
 
-    this.state = {
-      posts: []
+  useEffect(() => {
+    async function fetchData () {
+      const contentType = await client.getContentType('blogPost')
+      const posts = await fetchEntriesForContentType(contentType)
+      setPosts(posts)
     }
-  }
 
-  async componentDidMount () {
-    const contentType = await client.getContentType('blogPost')
-    const posts = await this.fetchEntriesForContentType(contentType)
-    this.setState({ posts })
-  }
+    fetchData()
+  }, [])
 
-  fetchEntriesForContentType = async (contentType) => {
+  const fetchEntriesForContentType = async (contentType) => {
     const entries = await client.getEntries({
       content_type: contentType.sys.id
     })
@@ -30,11 +28,5 @@ class BlogContainer extends Component {
     console.log(`Error getting Entries for ${contentType.name}.`)
   }
 
-  render () {
-    const { posts } = this.state
-
-    return <Blog posts={posts} />
-  }
+  return <Blog posts={posts} />
 }
-
-export default BlogContainer
