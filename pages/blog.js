@@ -1,9 +1,9 @@
 import { Blog } from '../components'
-import { useHttp } from '../hooks/http'
+import { useEntries } from '../hooks/http'
 import '../public/sass/blog.scss'
 
 export default () => {
-  const [data] = useHttp('blogPost', [])
+  const [data] = useEntries('blogPost', [])
 
   return <Blog posts={data} />
 }

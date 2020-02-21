@@ -5,7 +5,7 @@ const client = require('contentful').createClient({
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 })
 
-export const useHttp = (type, dependencies) => {
+export const useEntries = (type, dependencies) => {
   const [data, setData] = useState([])
 
   useEffect(() => {
@@ -25,6 +25,22 @@ export const useHttp = (type, dependencies) => {
     if (entries.items) return entries.items
     console.log(`Error getting Entries for ${contentType.name}.`)
   }
+
+  return [data]
+}
+
+export const useEntry = (id, dependencies) => {
+  const [data, setData] = useState(null)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const entry = await client.getEntry(id)
+
+      setData(entry ? entry.fields : false)
+    }
+
+    fetchData()
+  }, dependencies)
 
   return [data]
 }
