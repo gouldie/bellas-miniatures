@@ -1,4 +1,3 @@
-import React from 'react'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']

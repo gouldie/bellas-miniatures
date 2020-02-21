@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default () => (
   <div className='footer-container'>
     <div className='footer'>
