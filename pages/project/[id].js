@@ -24,7 +24,6 @@ class Project extends Component {
 
     client.getEntry(id)
       .then(res => {
-        console.log('res', res)
         this.setState({ project: res.fields })
       })
       .catch(err => {

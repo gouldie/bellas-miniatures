@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { useState, useEffect } from 'react'
 import { Project } from '../../components'
 import Select, { components } from 'react-select'
 import FlipMove from 'react-flip-move'
@@ -16,26 +16,18 @@ const Option = props => {
   )
 }
 
-class Projects extends Component {
-  constructor () {
-    super()
+export default ({ projects }) => {
+  const [filter, setFilter] = useState({ value: 'name', label: 'Sort by: Name', subLabel: 'Name' })
 
-    this.state = {
-      filter: { value: 'name', label: 'Sort by: Name', subLabel: 'Name' }
-    }
-  }
+  useEffect(() => {
+    window.addEventListener('resize', resizeImages)
+  }, [])
 
-  componentDidMount () {
-    window.addEventListener('resize', this.resizeImages)
-  }
+  useEffect(() => {
+    resizeImages()
+  }, [projects])
 
-  componentDidUpdate (nextState) {
-    if (this.state.projects !== nextState.projects) {
-      this.resizeImages()
-    }
-  }
-
-  resizeImages = () => {
+  const resizeImages = () => {
     const projectList = document.getElementsByClassName('project')
 
     for (let i = 0; i < projectList.length; i++) {
@@ -55,53 +47,46 @@ class Projects extends Component {
     }
   }
 
-  handleChange = filter => {
-    this.setState({ filter })
-  };
+  const handleChange = filter => {
+    setFilter(filter)
+  }
 
-  render () {
-    const { filter } = this.state
-    const { projects } = this.props
+  if (filter.value === 'name') {
+    projects.sort((a, b) => a.fields.title < b.fields.title ? -1 : 1)
+  } else {
+    projects.sort((a, b) => new Date(a.sys.createdAt) < new Date(b.sys.createdAt) ? 1 : -1)
+  }
 
-    if (filter.value === 'name') {
-      projects.sort((a, b) => a.fields.title < b.fields.title ? -1 : 1)
-    } else {
-      projects.sort((a, b) => new Date(a.sys.createdAt) < new Date(b.sys.createdAt) ? 1 : -1)
-    }
+  return (
+    <div className='projects-wrapper'>
+      <div className='projects-container'>
+        <div className='select-wrapper'>
+          <Select
+            instanceId='select-field'
+            value={filter}
+            onChange={handleChange}
+            options={options}
+            components={{ Option }}
+            isSearchable={false}
+          />
+        </div>
 
-    return (
-      <div className='projects-wrapper'>
-        <div className='projects-container'>
-          <div className='select-wrapper'>
-            <Select
-              instanceId='select-field'
-              value={filter}
-              onChange={this.handleChange}
-              options={options}
-              components={{ Option }}
-              isSearchable={false}
-            />
-          </div>
+        <div className='projects'>
+          <FlipMove typeName={null}>
+            {projects.length > 0
+              ? projects.map((p, i) => (
+                <Project
+                  id={p.sys.id}
+                  title={p.fields.title}
+                  image={p.fields.images[0].fields.file.url + '?fit=pad'}
+                  key={p.sys.id}
+                />
+              ))
+              : null}
+          </FlipMove>
 
-          <div className='projects'>
-            <FlipMove typeName={null}>
-              {projects.length > 0
-                ? projects.map((p, i) => (
-                  <Project
-                    id={p.sys.id}
-                    title={p.fields.title}
-                    image={p.fields.images[0].fields.file.url + '?fit=pad'}
-                    key={p.sys.id}
-                  />
-                ))
-                : null}
-            </FlipMove>
-
-          </div>
         </div>
       </div>
-    )
-  }
+    </div>
+  )
 }
-
-export default Projects
