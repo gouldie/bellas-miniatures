@@ -2,13 +2,7 @@ import { useState, useEffect } from 'react'
 import { HomeImage } from '../../components'
 import Carousel, { Modal, ModalGateway } from 'react-images'
 
-const FooterCaption = () => {
-  return (
-    <span>
-      Example text
-    </span>
-  )
-}
+const FooterCaption = (text) => <span>{text}</span>
 
 export default ({ projects, text }) => {
   const [photoIndex, setPhotoIndex] = useState(0)
@@ -68,6 +62,8 @@ export default ({ projects, text }) => {
                 key={i}
                 index={i}
                 image={p.fields.image.fields.file.url + '?fit=pad'}
+                alt={p.fields.description}
+                title={p.fields.title}
                 onClick={open}
               />
             ))
@@ -77,7 +73,7 @@ export default ({ projects, text }) => {
         <ModalGateway>
           {isOpen && (
             <Modal onClose={close}>
-              <Carousel currentIndex={photoIndex} views={images} components={{ FooterCaption }} />
+              <Carousel currentIndex={photoIndex} views={images} components={{ FooterCaption: () => FooterCaption(projects[photoIndex].fields.caption) }} />
             </Modal>
           )}
         </ModalGateway>
