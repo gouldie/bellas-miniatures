@@ -12,7 +12,11 @@ export default () => {
   const images = project && project.images.map(i => ({
     original: i.fields.file.url,
     thumbnail: i.fields.file.url,
-    sizes: '100px'
+    sizes: '100px',
+    originalAlt: i.fields.description,
+    thumbnailAlt: i.fields.description,
+    originalTitle: i.fields.title,
+    thumbnailTitle: i.fields.title
   }))
 
   return (

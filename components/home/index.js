@@ -62,8 +62,8 @@ export default ({ projects, text }) => {
                 key={i}
                 index={i}
                 image={p.fields.image.fields.file.url + '?fit=pad'}
-                alt={p.fields.description}
-                title={p.fields.title}
+                alt={p.fields.image.fields.description}
+                title={p.fields.image.fields.title}
                 onClick={open}
               />
             ))

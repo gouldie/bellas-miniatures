@@ -4,13 +4,13 @@ import { Component } from 'react'
 // Needs to stay a class component otherwise react-flip-move breaks
 export default class Project extends Component {
   render () {
-    const { title, image, id } = this.props
+    const { title, image, imageTitle, alt, id } = this.props
 
     return (
       <div className='project-wrapper'>
         <Link href="/project/[id]" as={`/project/${id}`}>
           <div className='project'>
-            <img src={image} />
+            <img src={image} title={imageTitle} alt={alt} />
           </div>
         </Link>
         <div className='project-info'>

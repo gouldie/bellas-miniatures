@@ -79,6 +79,8 @@ export default ({ projects }) => {
                   id={p.sys.id}
                   title={p.fields.title}
                   image={p.fields.images[0].fields.file.url + '?fit=pad'}
+                  imageTitle={p.fields.images[0].fields.title}
+                  alt={p.fields.images[0].fields.description}
                   key={p.sys.id}
                 />
               ))
