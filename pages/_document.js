@@ -8,7 +8,7 @@ class MyDocument extends Document {
 
   render () {
     return (
-      <Html>
+      <Html lang='en'>
         <Head>
           <meta name="description" content="custom made mininature models and doll houses"/>
           <script src="https://kit.fontawesome.com/02dd168113.js" crossOrigin="anonymous"></script>
