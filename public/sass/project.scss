@@ -16,6 +16,7 @@
   margin-bottom: 30px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .image-gallery-slides {
@@ -33,7 +34,7 @@
 }
 
 .image-gallery-content .image-gallery-slide .image-gallery-image {
-  max-height: inherit !important;
+  // max-height: inherit !important;
 }
 
 @media screen and (max-width: 1200px) {
