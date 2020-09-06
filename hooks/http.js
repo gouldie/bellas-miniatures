@@ -1,9 +1,17 @@
 import { useState, useEffect } from 'react'
+// import {} from 
 
 const client = require('contentful').createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 })
+
+export const fetchEntries = async (type) => {
+  const contentType = await client.getContentType(type)
+  const entries = await client.getEntries({ content_type: contentType.sys.id })
+
+  return entries.items
+}
 
 export const useEntries = (type, dependencies) => {
   const [data, setData] = useState([])
