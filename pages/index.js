@@ -4,11 +4,11 @@ import '../public/sass/home.scss'
 import useSWR from 'swr'
 import { Loader } from '../components'
 
-export default ({ text }) => {
+export default ({ homePageText }) => {
   const { data: galleryImages } = useSWR('galleryImage', fetchEntries)
   // const { data: text } = useSWR('text', fetchEntries)
 
-  const homePageText = text && text.find(t => t.fields.name === 'Home Page Title').fields.text
+  // const homePageText = text && text.find(t => t.fields.name === 'Home Page Title').fields.text
 
   return (
     <div class='home-wrapper'>
@@ -22,6 +22,7 @@ export default ({ text }) => {
 export async function getStaticProps() {
   // Call an external API endpoint to get posts
   const text = await fetchEntries('text')
+  const homePageText = text.find(t => t.fields.name === 'Home Page Title').fields.text
   // const posts = await res.json()
 
   // console.log('res', res)
@@ -30,7 +31,8 @@ export async function getStaticProps() {
   // will receive `posts` as a prop at build time
   return {
     props: {
-      text,
+      homePageText,
     },
+    revalidate: 1
   }
 }
