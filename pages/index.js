@@ -2,14 +2,18 @@ import { Home } from '../components'
 import { fetchEntries } from '../hooks/http'
 import '../public/sass/home.scss'
 import useSWR from 'swr'
+import { Loader } from '../components'
 
 export default () => {
   const { data: galleryImages } = useSWR('galleryImage', fetchEntries)
   const { data: text } = useSWR('text', fetchEntries)
-  
-  if (!galleryImages || !text) return <p>Loading..</p>
 
-  const homePageText = text.find(t => t.fields.name === 'Home Page Title')
+  const homePageText = text && text.find(t => t.fields.name === 'Home Page Title').fields.text
 
-  return <Home projects={galleryImages} text={homePageText && homePageText.fields.text} />
+  return (
+    <div class='home-wrapper'>
+      {!galleryImages && <div style={{ textAlign: 'center' }}><Loader margin='20px 0' /></div>}
+      {galleryImages && <Home projects={galleryImages} text={homePageText} />}
+    </div>
+  )
 }

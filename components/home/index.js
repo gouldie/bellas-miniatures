@@ -52,32 +52,30 @@ export default ({ projects, text }) => {
   })
 
   return (
-    <div className='home-wrapper'>
-      <div className='home-container'>
-        {text && <p style={{ maxWidth: '800px', margin: '20px auto 40px', fontSize: '20px', padding: '0 5px', textAlign: 'center' }}>{text}</p>}
-        <div className='gallery'>
-          {projects.length > 0
-            ? projects.map((p, i) => (
-              <HomeImage
-                key={i}
-                index={i}
-                image={p.fields.image.fields.file.url + '?fit=pad'}
-                alt={p.fields.image.fields.description}
-                title={p.fields.image.fields.title}
-                onClick={open}
-              />
-            ))
-            : null}
-        </div>
-
-        <ModalGateway>
-          {isOpen && (
-            <Modal onClose={close}>
-              <Carousel currentIndex={photoIndex} views={images} components={{ FooterCaption: () => FooterCaption(projects[photoIndex].fields.caption) }} />
-            </Modal>
-          )}
-        </ModalGateway>
+    <div className='home-container'>
+      {text && <p style={{ maxWidth: '800px', margin: '20px auto 40px', fontSize: '20px', padding: '0 5px', textAlign: 'center' }}>{text}</p>}
+      <div className='gallery'>
+        {projects.length > 0
+          ? projects.map((p, i) => (
+            <HomeImage
+              key={i}
+              index={i}
+              image={p.fields.image.fields.file.url + '?fit=pad'}
+              alt={p.fields.image.fields.description}
+              title={p.fields.image.fields.title}
+              onClick={open}
+            />
+          ))
+          : null}
       </div>
+
+      <ModalGateway>
+        {isOpen && (
+          <Modal onClose={close}>
+            <Carousel currentIndex={photoIndex} views={images} components={{ FooterCaption: () => FooterCaption(projects[photoIndex].fields.caption) }} />
+          </Modal>
+        )}
+      </ModalGateway>
     </div>
   )
 }
